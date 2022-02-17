@@ -29,4 +29,20 @@ gcp() {
 	git commit -m "$1";
 	git push origin HEAD
 }
-asdf
+
+git-reset() {
+	# An alias with safety features for `git reset`. Checks whether the repo
+	# you are about to reset is the dotfiles repo, prompting you before
+	# resetting it if it is. This helps prevent unwanted resets that occur with # my dotfiles repo
+	if git remote -v | awk -F ' ' 'NR==1{print $2}' | grep "dotfiles" 1> /dev/null
+	then
+		read -p "Reset your dotfiles repo? " -n 1 -r
+		echo
+		if [[ ! $REPLY =~ ^[Yy]$ ]]
+		then
+			echo "Cancelling reset"
+		else
+			git reset $@
+		fi
+	fi
+}
