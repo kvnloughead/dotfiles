@@ -38,6 +38,10 @@ git clone https://github.com/kvnloughead/command-line-notes
 # update npm
 sudo npm i -g npm
 
-# interactive 
+# interactive
 echo "Authorizing GitHub CLI"
 gh auth login
+
+# C utilities
+sudo apt install clang
+sudo apt install gdb  # for debugger
