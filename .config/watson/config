@@ -1,0 +1,8 @@
+[options]
+confirm_new_project = true
+confirm_new_tag = true
+log_current = true
+stop_on_start = true
+stop_on_restart = true
+week_start = saturday
+
