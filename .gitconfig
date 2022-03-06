@@ -1,8 +1,5 @@
 [user]
 	email = kvnloughead@gmail.com
 	name = Kevin Loughead
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
 [init]
 	defaultBranch = main
