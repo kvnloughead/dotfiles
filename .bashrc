@@ -123,16 +123,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Load user defined config files
-for f in ~/dotfiles/*.sh; do source $f; done
-for f in ~/dotfiles/git/*.sh; do source $f; done
-for f in ~/dotfiles/system/*.sh; do source $f; done
-for f in ~/dotfiles/practicum/*.sh; do source $f; done
-for f in ~/dotfiles/windows/*.sh; do source $f; done
+# Load user defined config and alias files
+for f in ~/.aliases/*.sh; do source $f; done
+for f in ~/.config/*.sh; do source $f; done
 
-# Load pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# If installed, load pyenv
+if [[ $(command -v pyenv) ]]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"  
+fi
 
-. "$HOME/.cargo/env"
+# If installed, source cargo enviornment
+if [[ $(command -v cargo) ]]; then
+  . "$HOME/.cargo/env"
+fi
+
