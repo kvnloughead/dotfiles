@@ -20,3 +20,4 @@ clndeploy() {
     git checkout main
     git pull
     cd ~/dev/command-line-notes
+}
