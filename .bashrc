@@ -118,6 +118,11 @@ fi
 windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
 windows_userdir=`wslpath "${windows_userdir}"`
 
+# For easy access to annoyingly located Windows config files
+terminalconfig="${windows_userdir}/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+vscodesettings="${windows_userdir}/AppData/Roaming/Code/User/settings.json"
+vscodekeybindings="${windows_userdir}/AppData/Roaming/Code/User/keybindings.json"
+
 # Load nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
