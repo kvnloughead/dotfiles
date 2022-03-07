@@ -131,7 +131,7 @@ for f in ~/.config/*.sh; do source $f; done
 if [[ $(command -v pyenv) ]]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"  
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # If installed, source cargo enviornment
@@ -139,3 +139,7 @@ if [[ $(command -v cargo) ]]; then
   . "$HOME/.cargo/env"
 fi
 
+# Load exercism auto completion
+if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+    source ~/.config/exercism/exercism_completion.bash
+fi
