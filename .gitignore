@@ -1,6 +1,7 @@
 # gitignore for dotfiles bare repo
 
 # Ignore personal directories
+bin/
 dev/
 practicum/
 tutor/
@@ -10,9 +11,18 @@ tutor/
 # Ignore external program directories
 exercism/
 snap/
+.bash_history
+.bash_logout
 .cache/
 .config/configstore
 .config/micro/buffers
+.config/watson/frames*
+.config/watson/state*
+.config/wslu/
+.dotfiles/
+.landscape/
+.lesshst
+.local/
 .pyenv/
 .python_history
-.vscode-server.
+.vscode-server/
