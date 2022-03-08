@@ -1,8 +1,10 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [
+    "actions":
+    [
         {
-            "command": {
+            "command":
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -17,7 +19,8 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": {
+            "command":
+            {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
@@ -28,14 +31,17 @@
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{058e810e-7671-4b03-b3d3-3820e5aa99ce}",
-    "profiles": {
-        "defaults": {
+    "profiles":
+    {
+        "defaults":
+        {
             "bellStyle": "none",
             "cursorShape": "bar",
             "experimental.retroTerminalEffect": false,
             "startingDirectory": null
         },
-        "list": [
+        "list":
+        [
             {
                 "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -55,23 +61,24 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "\\\\wsl.localhost\\Ubuntu\\home\\kevin"
-            },
-            {
                 "colorScheme": "Campbell",
                 "commandline": "wsl.exe -d Ubuntu-20.04",
                 "guid": "{058e810e-7671-4b03-b3d3-3820e5aa99ce}",
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "name": "Ubuntu-20.04",
                 "startingDirectory": "\\\\wsl.localhost\\Ubuntu-20.04\\home\\kevin"
+            },
+            {
+                "colorScheme": "Solarized Dark",
+                "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+                "hidden": false,
+                "name": "Ubuntu-18.04",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
-    "schemes": [
+    "schemes":
+    [
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",

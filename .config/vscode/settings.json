@@ -1,126 +1,149 @@
 {
-    "emmet.triggerExpansionOnTab": true,
-    "editor.tabCompletion": "on",
-    "editor.tabSize": 2,
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "prettier.jsxSingleQuote": true,
-    "prettier.singleQuote": true,
-    "liveServer.settings.donotShowInfoMsg": true,
-    "liveServer.settings.port": 5555,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "text.html.markdown.journal.task.open.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.open.marker",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.open.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.open.text",
-                "settings": {}
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.marker",
-                "settings": {
-                    "foreground": "#AAAAAA"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.text",
-                "settings": {
-                    "foreground": "#AAAAAA"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.memo.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.memo.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.scope",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.link.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.link.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            }
-        ]
-    },
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
-    "editor.suggestSelection": "first",
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "right"
-    },
-    "liveServer.settings.NoBrowser": true,
-    "editor.linkedEditing": true,
-    "svelte.enable-ts-plugin": true,
-    "files.associations": {
-        "*.svx": "markdown",
-        "*html": "html"
-    },
-    "css.validate": false, // Disable css built-in lint
-    "stylelint.enable": true, // Enable sytlelint
-    "scss.validate": false,
-    "editor.formatOnSave": true,
-    "editor.minimap.enabled": false,
-    "editor.wordWrap": "wordWrapColumn",
-    "window.menuBarVisibility": "compact",
-    "security.workspace.trust.untrustedFiles": "open",
-    "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
-    "window.zoomLevel": 1, // Disable scss lint (optional if using scss),
-    // // C formatting settings
-    "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 0}", // change c indentation style
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "emmet.triggerExpansionOnTab": true,
+  "editor.tabCompletion": "on",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.port": 5555,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "text.html.markdown.journal.task.open.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.open.marker",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.open.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.open.text",
+        "settings": {}
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.marker",
+        "settings": {
+          "foreground": "#AAAAAA"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.text",
+        "settings": {
+          "foreground": "#AAAAAA"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.memo.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.memo.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.scope",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.link.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.link.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      }
+    ]
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "editor.suggestSelection": "first",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "right"
+  },
+  "liveServer.settings.NoBrowser": true,
+  "svelte.enable-ts-plugin": true,
+  "files.associations": {
+    "*.svx": "markdown",
+    "*html": "html"
+  },
+  "css.validate": false, // Disable css built-in lint
+  "stylelint.enable": true, // Enable sytlelint
+  "scss.validate": false,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "wordWrapColumn",
+  "window.menuBarVisibility": "compact",
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
+  "window.zoomLevel": 1, // Disable scss lint (optional if using scss)
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[md]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true, // Update closing tags automatically. Doesn't work in JSX yet.
+  "editor.tabSize": 2, // Compatibility with Prettier
+  "editor.hover.delay": 600, // Make the hover info not appear so eagerly
+  //   "javascript.inlayHints.parameterNames.enabled": "all",
+  "window.newWindowDimensions": "inherit",
+  "liveServer.settings.CustomBrowser": "chrome",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Monokai", // Make new windows the same size & position as my last one
+  // "editor.defaultFormatter": "esbenp.prettier-vscode" // Use Prettier for everything by default
+  // C formatting settings
+  //
+  "C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 0}",
 }
