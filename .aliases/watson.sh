@@ -20,9 +20,9 @@ alias wtags="watson tags"
 alias wl="watson log"
 
 # Creates a zero length, already stopped task and opens for editing
-# Much easier than trying to pass --to and --from from command line 
+# Much easier than trying to pass --to and --from from command line
 wa() {
   watson start "$@"
-  waston stop
+  watson stop
   watson edit
 }

@@ -21,8 +21,6 @@ alias pst="powershell.exe -command 'Get-Clipboard' | head -n -1"
 
 # script aliases
 alias crc='crc.sh'    # "Create React Component"
-alias gh-new='~/scripts/gh-new.sh'
-alias bem='~/scripts/bem.sh'
 
 # misc
 alias tree="tree -I node_modules"

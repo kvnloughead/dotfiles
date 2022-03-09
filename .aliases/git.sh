@@ -19,8 +19,6 @@ alias gca='git commit --amend'
 
 alias gp='git push origin HEAD'
 
-alias gh-new='~/scripts/gh-new.sh'
-
 gcp() {
   # usage: `gcp "commit message"`
 	git add -A;
