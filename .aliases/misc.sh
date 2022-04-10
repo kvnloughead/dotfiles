@@ -12,6 +12,7 @@ mkcd() {
 # convenience
 alias start="explorer.exe"
 alias lsa="ls -a"
+alias lsal="ls -al"
 alias cl="clear"
 alias src="source ~/.bashrc"
 

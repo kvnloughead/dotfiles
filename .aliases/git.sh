@@ -4,7 +4,6 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(y
 alias gs='git status -sb'
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 
-alias gco='git checkout'
 alias gsw='git switch'
 alias gb='git branch'
 alias gm='git merge'

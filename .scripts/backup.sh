@@ -1,11 +1,8 @@
 #!/bin/bash
 
 # Backs up WSL files to OneDrive
-#
-
-
-date=$(date '+%m-%d-%Y')
 mkdir -p /mnt/c/Users/kvnlo/OneDrive/wsl-backups
+date=$(date '+%m-%d-%Y-h%Hm%M')
 rsync \
   --archive \
   --verbose \
@@ -22,4 +19,6 @@ rsync \
   --exclude '.rustup' \
   --exclude '.git' \
   --exclude '.local' \
+  --exclude 'practicum/tasks' \
+  --exclude 'fonts' \
    /home/kevin/ /mnt/c/Users/kvnlo/OneDrive/wsl-backups/$WSL_DISTRO_NAME-$date/
