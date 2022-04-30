@@ -5,6 +5,7 @@ alias gs='git status -sb'
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 
 alias gsw='git switch'
+alias gswc='git switch -c'
 alias gb='git branch'
 alias gm='git merge'
 
@@ -17,6 +18,8 @@ alias gc='git commit'
 alias gca='git commit --amend'
 
 alias gp='git push origin HEAD'
+
+alias githardpull='git reset HEAD --hard && git pull'
 
 gcp() {
   # usage: `gcp "commit message"`

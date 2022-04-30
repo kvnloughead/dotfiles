@@ -1,4 +1,3 @@
-
 alias cln='python3 ~/bin/command-line-notes/main.py'
 alias clne='python3 ~/bin/command-line-notes/main.py edit'
 alias clnd='python3 ~/bin/command-line-notes/main.py delete'

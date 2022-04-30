@@ -1,8 +1,5 @@
 {
-  "editor.rulers": [
-    80,
-    120
-  ],
+  "editor.rulers": [80, 120],
   "emmet.triggerExpansionOnTab": true,
   "editor.tabCompletion": "on",
   "prettier.jsxSingleQuote": true,
@@ -99,11 +96,6 @@
     "jupyter-notebook": "right"
   },
   "liveServer.settings.NoBrowser": true,
-  "svelte.enable-ts-plugin": true,
-  "files.associations": {
-    "*.svx": "markdown",
-    "*html": "html"
-  },
   "css.validate": false, // Disable css built-in lint
   "stylelint.enable": true, // Enable sytlelint
   "scss.validate": false,
@@ -111,8 +103,7 @@
   "editor.wordWrap": "wordWrapColumn",
   "window.menuBarVisibility": "compact",
   "security.workspace.trust.untrustedFiles": "open",
-  "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
-  "window.zoomLevel": 1, // Disable scss lint (optional if using scss)
+  "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)", // Disable scss lint (optional if using scss)
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -128,6 +119,9 @@
   "[md]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "files.autoSave": "onFocusChange",
@@ -138,12 +132,42 @@
   //   "javascript.inlayHints.parameterNames.enabled": "all",
   "window.newWindowDimensions": "inherit",
   "liveServer.settings.CustomBrowser": "chrome",
+  "C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 0}",
+  "prettier.eslintIntegration": true,
+  "prettier.printWidth": 80,
+  "prettier.trailingComma": "all",
+  "prettier.cssEnable": ["css", "less", "sass"],
+
+  // Nunjucks settings
+  "files.associations": {
+    "*.njk": "nunjucks",
+    "*.html": "html"
+  },
+  "nunjucksFormat.commline": true,
+  "nunjucksFormat.spaceclose": true,
+  "nunjucksFormat.style": true,
+  "nunjucksFormat.unformatted": false,
+  "nunjucksFormat.force_attribute": true,
+  "nunjucksFormat.wrap": 80,
+
+  // markdown settings
   "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Monokai", // Make new windows the same size & position as my last one
-  // "editor.defaultFormatter": "esbenp.prettier-vscode" // Use Prettier for everything by default
-  // C formatting settings
-  //
-  "C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 0}",
+
+  "emmet.includeLanguages": {
+    "typescript": "html", // for lit-html
+    "javascript": "html", // for lit-html
+    "njk": "html",
+    "nunjucks": "html"
+  },
+  "lit-html.tags": ["html", "template"],
+
+  /* lit-html
+  These options seemed to enable lit-html formatting, but deleting them
+  didn't remove. Keeping them here just in case */
+  // "typescript.tsserver.useSyntaxServer": "never",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
