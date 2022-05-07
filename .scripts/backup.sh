@@ -17,7 +17,6 @@ rsync \
   --exclude '.pyenv' \
   --exclude '.cargo' \
   --exclude '.rustup' \
-  --exclude '.git' \
   --exclude '.local' \
   --exclude 'practicum/tasks' \
   --exclude 'fonts' \
