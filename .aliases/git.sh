@@ -10,8 +10,8 @@ alias gb='git branch'
 alias gm='git merge'
 
 alias ga='git add'
-alias gac='git add -A && git commit'
-alias gaca='git add -A && git commit --amend'
+# alias gac='git add -A && git commit'
+# alias gaca='git add -A && git commit --amend'
 alias gaf='git add -f'
 
 alias gc='git commit'
@@ -27,3 +27,5 @@ gcp() {
 	git commit -m "$1";
 	git push origin HEAD
 }
+
+alias gph='git push heroku'
