@@ -1,4 +1,6 @@
 {
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
   "editor.rulers": [80, 120],
   "emmet.triggerExpansionOnTab": true,
   "editor.tabCompletion": "on",
@@ -124,50 +126,49 @@
   },
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
-  "files.autoSave": "onFocusChange",
-  "editor.formatOnSave": true,
   "editor.linkedEditing": true, // Update closing tags automatically. Doesn't work in JSX yet.
   "editor.tabSize": 2, // Compatibility with Prettier
-  "editor.hover.delay": 600, // Make the hover info not appear so eagerly
-  //   "javascript.inlayHints.parameterNames.enabled": "all",
-  "window.newWindowDimensions": "inherit",
+  "editor.hover.delay": 600,
   "liveServer.settings.CustomBrowser": "chrome",
   "C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 0}",
   "prettier.eslintIntegration": true,
   "prettier.printWidth": 80,
   "prettier.trailingComma": "all",
   "prettier.cssEnable": ["css", "less", "sass"],
-
   // Nunjucks settings
-  "files.associations": {
-    "*.njk": "nunjucks",
-    "*.html": "html"
-  },
   "nunjucksFormat.commline": true,
   "nunjucksFormat.spaceclose": true,
   "nunjucksFormat.style": true,
   "nunjucksFormat.unformatted": false,
   "nunjucksFormat.force_attribute": true,
   "nunjucksFormat.wrap": 80,
-
   // markdown settings
   "[markdown]": {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   "emmet.includeLanguages": {
     "typescript": "html", // for lit-html
     "javascript": "html", // for lit-html
     "njk": "html",
-    "nunjucks": "html"
+    "nunjucks": "html",
+    "erb": "html"
   },
   "lit-html.tags": ["html", "template"],
-
+  "window.zoomLevel": 1,
   /* lit-html
   These options seemed to enable lit-html formatting, but deleting them
-  didn't remove. Keeping them here just in case */
+  didn't remove. Keeping them here in comments just in case */
   // "typescript.tsserver.useSyntaxServer": "never",
-  // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.njk": "nunjucks",
+    "*.html": "html",
+    "*.erb": "erb"
+  },
+  "[erb]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+  }
 }
