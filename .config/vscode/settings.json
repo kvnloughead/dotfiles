@@ -155,8 +155,10 @@
     "nunjucks": "html",
     "erb": "html"
   },
-  "lit-html.tags": ["html", "template"],
-  "window.zoomLevel": 1,
+  "lit-html.tags": [
+    "html",
+    "template"
+  ],
   /* lit-html
   These options seemed to enable lit-html formatting, but deleting them
   didn't remove. Keeping them here in comments just in case */
@@ -169,6 +171,6 @@
   },
   "[erb]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
