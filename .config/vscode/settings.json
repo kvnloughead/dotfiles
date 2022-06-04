@@ -105,7 +105,6 @@
   "editor.wordWrap": "wordWrapColumn",
   "window.menuBarVisibility": "compact",
   "security.workspace.trust.untrustedFiles": "open",
-  "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)", // Disable scss lint (optional if using scss)
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -155,10 +154,7 @@
     "nunjucks": "html",
     "erb": "html"
   },
-  "lit-html.tags": [
-    "html",
-    "template"
-  ],
+  "lit-html.tags": ["html", "template"],
   /* lit-html
   These options seemed to enable lit-html formatting, but deleting them
   didn't remove. Keeping them here in comments just in case */
@@ -172,5 +168,7 @@
   "[erb]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
+  "terminal.integrated.tabs.enableAnimation": false
 }
