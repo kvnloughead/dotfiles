@@ -7,6 +7,6 @@ export wc='/mnt/c'
 export gh='https://github.com/kvnloughead/'
 export lh='http://localhost'
 
-export EDITOR='micro'
-export VISUAL='micro'
+export EDITOR='nano'
+# export VISUAL='micro'
 

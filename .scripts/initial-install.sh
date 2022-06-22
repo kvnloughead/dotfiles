@@ -12,8 +12,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/gi
 sudo apt install gh
 
 # install micro
-curl https://getmic.ro | bash
-sudo mv micro /usr/bin
+# curl https://getmic.ro | bash
+# sudo mv micro /usr/bin
 
 # install pip
 sudo apt install python3-pip
@@ -44,8 +44,8 @@ echo "Authorizing GitHub CLI"
 gh auth login
 
 # C utilities
-sudo apt install clang
-sudo apt install gdb  # for debugger
+# sudo apt install clang
+# sudo apt install gdb  # for debugger
 
 # Ruby on Rails installation
 # [source](https://gorails.com/setup/ubuntu/18.04)
@@ -75,7 +75,6 @@ exec $SHELL
 # rbenv rehash # must run this command after installing bundler
 
 # end Ruby on Rails installation
-
 
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
