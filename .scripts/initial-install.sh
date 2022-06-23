@@ -1,5 +1,5 @@
-#!/bin/bash
 # This script Run this script after cloning dotfiles to new machine.
+#!/bin/bash
 # Please comment out whatever you don't need
 
 # update package repositories
@@ -31,10 +31,12 @@ pip3 install td-watson
 cd ~ && mkdir dev && cd dev
 git clone https://github.com/kvnloughead/blog
 git clone https://github.com/kvnloughead/command-line-notes
+cd command-line-notes && pip install -r requirements.txt
 
 # make `bin` and clone some repos
 cd ~ && mkdir bin && cd bin
 git clone https://github.com/kvnloughead/command-line-notes
+cd command-line-notes && pip install -r requirements.txt
 
 # update npm
 sudo npm i -g npm
