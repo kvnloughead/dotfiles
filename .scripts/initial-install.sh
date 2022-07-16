@@ -11,6 +11,11 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 sudo apt install gh
 
+# install and set up mongodb
+sudo apt-get install mongodb -y
+sudo mkdir -p /data/db
+sudo chmod -R go+w /data/db
+
 # install micro
 curl https://getmic.ro | bash
 sudo mv micro /usr/bin
@@ -47,6 +52,9 @@ gh auth login
 sudo apt install clang
 sudo apt install gdb  # for debugger
 
+# Install heroku CLI
+curl https://cli-assets.heroku.com/install.sh | sh
+
 # Ruby on Rails installation
 # [source](https://gorails.com/setup/ubuntu/18.04)
 sudo apt install curl
@@ -66,16 +74,6 @@ exec $SHELL
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 exec $SHELL
-
-# After this, you still need to run install a ruby version and gems. Example:
-# rbenv install 3.1.2
-# rbenv global 3.1.2
-# gem install rails
-# gem install bundler
-# rbenv rehash # must run this command after installing bundler
-
-# end Ruby on Rails installation
-
 
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
