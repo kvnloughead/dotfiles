@@ -15,6 +15,7 @@ rsync \
   --exclude '.nvm' \
   --exclude '.vscode-server' \
   --exclude '.pyenv' \
+  --exclude '.rbenv' \
   --exclude '.cargo' \
   --exclude '.rustup' \
   --exclude '.local' \

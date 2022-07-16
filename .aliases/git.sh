@@ -19,6 +19,7 @@ alias gca='git commit --amend'
 
 alias gp='git push origin HEAD'
 
+alias githard='git reset HEAD --hard'
 alias githardpull='git reset HEAD --hard && git pull'
 
 gcp() {
