@@ -1,6 +1,6 @@
 # Dotfiles Bare Repo
 
-This is my second attempt at a dotfiles repo. The [first attempt](https://github.com/kvnloughead/dotfiles-homerepo) simply turned my $HOME directory into a repo with a `.gitignore` of `*`. This went ok, and I was able to set up a new computer with relative ease. But I kept running into issues with the setup, so I decided to go with another approach — a bare repo. 
+This is my second attempt at a dotfiles repo. The [first attempt](https://github.com/kvnloughead/dotfiles-homerepo) simply turned my $HOME directory into a repo with a `.gitignore` of `*`. This went ok, and I was able to set up a new computer with relative ease. But I kept running into issues with the setup, so I decided to go with another approach — a bare repo.
 
 For more details about the issues I ran into in my first iteration, and an explanation of bare repos and their use in version-controlling your dotfiles, see my [blog post on the subject](https://todo-name-blog.vercel.app/posts/dotfiles-bare-repo).
 
@@ -23,22 +23,22 @@ These are the steps one would take to setup their dotfiles repo on a new machine
       --separate-git-dir=$HOME/.dotfiles \
       remote-url \
       dotfiles-tmp
-   
+
    # --separate-git-dir places git history in ~/.dotfiles instead of `./.git`
    # Working tree will be placed in `./dotfiles`.
    ```
 
-2. Copy working tree to where each file should go. 
+2. Copy working tree to where each file should go.
 
    ```sh
-   # There are other ways to do this of course. 
+   # There are other ways to do this of course.
    # And I'm not sure if it is necessary to exclude `.git`.
    rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
    ```
 
 3. `rm -rf dotfiles-tmp`
 
-4. Run the install script with `~/.scripts/initial-install.sh`. 
+4. Run the install script with `~/.scripts/initial-install.sh`.
 
    This script is nothing fancy, and far from perfect. It's really just a long list of commands that I've been compiling of programs that I figure I'll probably want on a new machine. I'd suggest pruning to suit your own needs.
 
@@ -56,19 +56,19 @@ The main difference is that it is somewhat trickier to manage file tracking.
 
 ## Initial Setup
 
-  Instructions for getting a new dotfiles bare repo setup. I'm relying    heavily on an [article by Greg Owens](https://stegosaurusdormant.com/    bare-git-repo/#fnref:no-home-git-repo) for these instructions.
+Instructions for getting a new dotfiles bare repo setup. I'm relying heavily on an [article by Greg Owens](https://stegosaurusdormant.com/ bare-git-repo/#fnref:no-home-git-repo) for these instructions.
 
 1. Create a new bare Git repo in `~/.dotfiles` to store the history for your dotfiles. Feel free to change the directory name.
 
-    ```sh
-    git init --bare $HOME/.dotfiles
-    ```
+   ```sh
+   git init --bare $HOME/.dotfiles
+   ```
 
-2. Git commands won't work without the addition of a few flags. You should create an alias to save you a lot of typing. Feel free to change the alias — I'm using `dg`. Add this to `.bashrc` and run `source .bashrc`. 
+2. Git commands won't work without the addition of a few flags. You should create an alias to save you a lot of typing. Feel free to change the alias — I'm using `dg`. Add this to `.bashrc` and run `source .bashrc`.
 
    ```sh
    alias dotgit='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-    
+
    # --git-dir tells git where the git history is
    # --work-tree tells git where working tree is
    ```
@@ -79,7 +79,7 @@ The main difference is that it is somewhat trickier to manage file tracking.
    dotgit config status.showUntrackedFiles no
    ```
 
-   Helpfully, when using this setting if you run `dotgit status` you'll be prompted with "(use -u to show untracked files)". Unfortunately, the `-u` flag shows *everything* in .dotfiles bare repo, recursively. With the `-unormal` flag, `dotgit status` shows only untracked files and directories in the cwd. <br></br>
+   Helpfully, when using this setting if you run `dotgit status` you'll be prompted with "(use -u to show untracked files)". Unfortunately, the `-u` flag shows _everything_ in .dotfiles bare repo, recursively. With the `-unormal` flag, `dotgit status` shows only untracked files and directories in the cwd. <br></br>
 
 4. Setup remote repo
 
@@ -88,4 +88,3 @@ The main difference is that it is somewhat trickier to manage file tracking.
    ```
 
 5. Start adding files.
-

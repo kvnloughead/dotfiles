@@ -26,3 +26,4 @@ snap/
 .pyenv/
 .python_history
 .vscode-server/
+*
