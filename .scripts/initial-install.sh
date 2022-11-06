@@ -86,3 +86,6 @@ yarn
 
 # install typescript
 sudo apt install node-typescript
+
+# install utilities
+sudo apt-get install zip unzip -y
