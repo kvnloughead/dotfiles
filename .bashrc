@@ -149,10 +149,4 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
 fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
-# Load pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-. "$HOME/.cargo/env"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
