@@ -34,11 +34,18 @@ cd ~ && mkdir bin && cd bin
 git clone https://github.com/kvnloughead/command-line-notes
 cd command-line-notes && pip install -r requirements.txt
 
-# install nvm
-# https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-nvm install --lts
-nvm install node
+# install n package manager, then install node
+sudo mkdir -p /usr/local/n # make cache folder (if missing) and take ownership
+sudo chown -R $(whoami) /usr/local/n # make sure the required folders exist 
+sudo mkdir -p /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+# take ownership of Node.js install destination folders
+sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
+bash n lts
+npm install -g n
+# install latest and current versions of node
+n latest
+n current
 
 # interactive
 echo "Authorizing GitHub CLI"
@@ -84,3 +91,6 @@ sudo apt install node-typescript
 
 # install utilities
 sudo apt-get install zip unzip -y
+
+# map xdg-open command to wslview
+sudo ln -s ../../bin/wslview /usr/local/bin/xdg-open
