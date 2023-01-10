@@ -1,4 +1,7 @@
 #!/bin/bash
+# Script to create a new repo and push to it. Requirements:
+#  - must be on `main` branch
+#  - must have at least on commit to push 
 
 name=$1
 
