@@ -45,3 +45,8 @@ alias node-wash="rm -rf node_modules && rm package-lock.json"
 alias lsa="ls -a"
 alias lsl="ls -lhF"
 alias lsal="ls -alhF"
+
+# Browser and live-server
+CHROME="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+alias chrome="${CHROME}"
+alias serve="npx live-server --browser=${CHROME}"

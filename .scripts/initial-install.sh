@@ -47,6 +47,9 @@ npm install -g n
 n latest
 n current
 
+# install useful node packages
+npm i -g live-server
+
 # interactive
 echo "Authorizing GitHub CLI"
 gh auth login
