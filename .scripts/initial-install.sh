@@ -60,5 +60,9 @@ sudo apt install node-typescript
 # install utilities
 sudo apt-get install zip unzip -y
 
-# map xdg-open command to wslview
-sudo ln -s ../../bin/wslview /usr/local/bin/xdg-open
+# If using WSL, map xdg-open command to wslview
+if grep -iE '(microsoft|wsl)' /proc/version
+then
+  sudo ln -s ../../bin/wslview /usr/local/bin/xdg-open
+fi
+

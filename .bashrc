@@ -120,9 +120,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Load environmental variables from Windows
-windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
-windows_userdir=`wslpath "${windows_userdir}"`
+# If using WSL, load environmental variables from Windows
+if grep -iE '(microsoft|wsl)' /proc/version
+then
+  windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
+  windows_userdir=`wslpath "${windows_userdir}"`
+fi
+
 
 # Load nvm
 export NVM_DIR="$HOME/.nvm"
