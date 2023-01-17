@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+#sudo ln -s ../../bin/wslview /usr/local/bin/xdg-open
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
