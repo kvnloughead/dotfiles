@@ -27,7 +27,7 @@ get_terminal_config() {
     read answer
     if [ "$answer" != "${answer#[Yy]}" ] ;
     then
-        cp $terminalconfig ~/.config/terminal/settings.json
+        cp $terminalconfig ~/.config/wsl/terminal/settings.json
     else
         echo Aborting
     fi
@@ -57,7 +57,7 @@ set_terminal_config() {
     echo -n "This will overwrite your active Terminal config file. Ok (y/n)? "
     read answer
     if [ "$answer" != "${answer#[Yy]}" ] ;then
-        cp ~/.config/terminal/settings.json $terminalconfig
+        cp ~/.config/terminal/wsl/settings.json $terminalconfig
     else
         echo Aborting
     fi

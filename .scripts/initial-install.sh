@@ -35,14 +35,8 @@ git clone https://github.com/kvnloughead/command-line-notes
 cd command-line-notes && pip install -r requirements.txt
 
 # install n package manager, then install node
-sudo mkdir -p /usr/local/n # make cache folder (if missing) and take ownership
-sudo chown -R $(whoami) /usr/local/n # make sure the required folders exist 
-sudo mkdir -p /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
-# take ownership of Node.js install destination folders
-sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
-curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-bash n lts
-npm install -g n
+mkdir ~/utils
+curl -L https://git.io/n-install | N_PREFIX=~/util/n bash -s -- -y
 # install latest and current versions of node
 n latest
 n current

@@ -180,5 +180,6 @@
   "[erb]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
-  }
+  },
+  "window.zoomLevel": 1
 }

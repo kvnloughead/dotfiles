@@ -120,12 +120,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# If using WSL, load environmental variables from Windows
-if grep -iE '(microsoft|wsl)' /proc/version
-then
-  windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
-  windows_userdir=`wslpath "${windows_userdir}"`
-fi
 
 
 # Load nvm
@@ -135,7 +129,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load user defined config and alias files
 for f in ~/.aliases/*.sh; do source $f; done
-for f in ~/.config/*.sh; do source $f; done
 
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then
@@ -153,3 +146,33 @@ fi
 if [ -f ~/.config/exercism/exercism_completion.bash ]; then
     source ~/.config/exercism/exercism_completion.bash
 fi
+
+# needed on ubuntu laptop for some tricky reason
+export DISPLAY=:0
+
+# path
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin/crc:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="~/data/db:$PATH"
+export PATH="$PATH:$HOME/.scripts"
+
+export EDITOR='vim'
+export gh='https://github.com/kvnloughead/'
+export lh='http://localhost'
+
+bind 'set bell-style none'
+
+# If using WSL, load WSL specific settings
+if grep -iE '(microsoft|wsl)' /proc/version
+then
+    windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
+    windows_userdir=`wslpath "${windows_userdir}"`
+
+    for f in ~/.config/wsl/*.sh; do source $f; done
+fi
+
+# tt time-tracker
+export SHEET_FILE='/home/kevin/Dropbox/tt/time-entries.json'
+
+export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
