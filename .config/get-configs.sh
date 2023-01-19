@@ -1,15 +1,20 @@
+# WSL only 
+#
 # I Haven't figured out how to symlink successfully between Windows and WSL.
 # So to keep my VSCode and Terminal config files in version control, I am
-# keeping copies of each config file in ~/.config/program-name/, and wrote some
-# code to help manage the copies. Don't judge.
+# keeping copies of each config file in ~/.config/, and wrote some code to help 
+# manage the copies. Don't judge.
 #
 # Basic Usage
 #
-# 1. To open the real versions for editing, `some-editor $name-of-config`
+# 1. To open the real versions for editing, `code $name-of-config`
 # 2. To update the copy of the config file, run the relevant getter function
 #
 # When initially setting up a new computer, or any time you want to update the
-# actual configs from the copies, run the relevant setter command.
+# actual configs from the copies, run the relevant setter command. So,
+#
+# get_terminal_config -- overwrites actual with copy
+# set_terminal_config -- overwrites copy with actual
 
 # $windows_userdir is declared in ~/.bashrc
 terminalconfig="${windows_userdir}/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
@@ -34,8 +39,8 @@ get_vscode_config() {
     echo -n "This will overwrite your copies of the vscode config files. Ok (y/n)? "
     read answer
     if [ "$answer" != "${answer#[Yy]}" ] ;then
-        cp $vscodesettings ~/.config/vscode/settings.json
-        cp $vscodekeybindings ~/.config/vscode/keybindings.json
+        cp $vscodesettings ~/.config/Code/Users/settings.json
+        cp $vscodekeybindings ~/.config/Code/Users/keybindings.json
     else
         echo Aborting
     fi
@@ -64,8 +69,8 @@ set_vscode_config() {
     echo -n "This will overwrite your active VSCode config files. Ok (y/n)? "
     read answer
     if [ "$answer" != "${answer#[Yy]}" ] ;then
-        cp ~/.config/vscode/settings.json $vscodesettings
-        cp ~/.config/vscode/keybindings.json $vscodekeybindings
+        cp ~/.config/Code/Users/settings.json $vscodesettings
+        cp ~/.config/Code/Users/keybindings.json $vscodekeybindings
     else
         echo Aborting
     fi
