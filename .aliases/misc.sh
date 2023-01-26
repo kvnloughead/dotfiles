@@ -22,7 +22,8 @@ alias lsal="ls -alhF"
 alias crc='crc.sh'    # "Create React Component"
 
 # live-server
-alias serve="npx live-server --browser=google-chrome"
+alias serve="npx live-server --browser=${CHROME}"
+
 
 # node
 alias nr='npm run'

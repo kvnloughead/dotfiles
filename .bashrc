@@ -168,8 +168,12 @@ if grep -iE '(microsoft|wsl)' /proc/version 1> /dev/null
 then
     windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
     windows_userdir=`wslpath "${windows_userdir}"`
+    CHROME="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+    alias serve="npx live-server --browser=${CHROME}"
 
     for f in ~/.config/wsl/*.sh; do source $f; done
+else
+    CHROME="google-chrome"
 fi
 
 # tt time-tracker
