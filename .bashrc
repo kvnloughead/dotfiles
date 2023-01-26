@@ -164,7 +164,7 @@ export lh='http://localhost'
 bind 'set bell-style none'
 
 # If using WSL, load WSL specific settings
-if grep -iE '(microsoft|wsl)' /proc/version
+if grep -iE '(microsoft|wsl)' /proc/version 1> /dev/null
 then
     windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
     windows_userdir=`wslpath "${windows_userdir}"`
