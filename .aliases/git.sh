@@ -29,3 +29,4 @@ gcp() {
 }
 
 alias gph='git push heroku'
+export giturl="git@github.com:kvnloughead"
