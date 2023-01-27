@@ -2,21 +2,14 @@
 
 case $2 in
 
-"usage")
+"usage"|"help")
   echo 
   echo "todo.sh $(basename $0) [ITEM_NUMBER]"
   echo
-  echo "  Prompts user to edit the todo entry with #ITEM_NUMBER." 
+  echo "  Prompts user to edit the todo entry with corresponding #ITEM_NUMBER." 
+  echo "  The current entry will be loaded into the input field."
+  echo "  To clear the input field, try using ^U."
   echo "  If ITEM_NUMBER isn't specified, opens \$TODO_DIR/todo.txt in \$EDITOR."
-  echo
-  ;;
-
-"help")
-  echo         
-  echo "todo.sh $(basename $0) [ITEM_NUMBER]"   
-  echo
-  echo "  Prompts user to edit the todo entry with #ITEM_NUMBER."   
-  echo "  If ITEM_NUMBER isn't specified, opens \$TODO_DIR/todo.txt in \$EDITOR."       
   echo
   ;;
 
@@ -32,7 +25,7 @@ case $2 in
     FILE=$TODO_DIR/$2.txt
     entry="$(todo.sh list | grep ^$2\\s | sed "s/$2//")" 
     printf "Current entry: $entry\n"
-    read -p 'Updated entry:  ' newval
+    read -e -i "$entry" -p 'Updated entry: ' newval
     todo.sh replace $2 $newval
   fi
   ;;
