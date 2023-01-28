@@ -180,3 +180,5 @@ fi
 export SHEET_FILE='/home/kevin/Dropbox/tt/time-entries.json'
 
 export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+alias vim="vim -S ~/.vimrc"  # vim wasn't reading ~/.vimrc

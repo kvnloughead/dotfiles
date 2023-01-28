@@ -1,4 +1,6 @@
 #!/bin/bash
+# Allows editing of a single todo item, selected by number. If no number is specified,
+# opens todo.txt in $EDITOR. Place this file in .todo.actions.d.
 
 case $2 in
 
@@ -23,12 +25,11 @@ case $2 in
     fi
   else
     FILE=$TODO_DIR/$2.txt
-    entry="$(todo.sh list | grep ^$2\\s | sed "s/$2//")" 
+    entry="$(todo.sh -p list | grep ^$2\\s | sed "s/$2//")" 
     printf "Current entry: $entry\n"
     read -e -i "$entry" -p 'Updated entry: ' newval
-    todo.sh replace $2 $newval
+    todo.sh -fn del $2 
+    todo.sh add $newval
   fi
   ;;
 esac
-
-
