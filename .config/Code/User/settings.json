@@ -1,10 +1,7 @@
 {
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
-  "editor.rulers": [
-    80,
-    120
-  ],
+  "editor.rulers": [80, 120],
   "emmet.triggerExpansionOnTab": true,
   "editor.tabCompletion": "on",
   "prettier.jsxSingleQuote": true,
@@ -106,7 +103,7 @@
   "scss.validate": false,
   "editor.minimap.enabled": false,
   "editor.wordWrap": "wordWrapColumn",
-  "window.menuBarVisibility": "compact",
+  "window.menuBarVisibility": "toggle",
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)", // Disable scss lint (optional if using scss)
   "[css]": {
@@ -137,11 +134,7 @@
   "prettier.eslintIntegration": true,
   "prettier.printWidth": 80,
   "prettier.trailingComma": "all",
-  "prettier.cssEnable": [
-    "css",
-    "less",
-    "sass"
-  ],
+  "prettier.cssEnable": ["css", "less", "sass"],
   // Nunjucks settings
   "nunjucksFormat.commline": true,
   "nunjucksFormat.spaceclose": true,
@@ -162,10 +155,7 @@
     "nunjucks": "html",
     "erb": "html"
   },
-  "lit-html.tags": [
-    "html",
-    "template"
-  ],
+  "lit-html.tags": ["html", "template"],
   /* lit-html
     These options seemed to enable lit-html formatting, but deleting them
     didn't remove. Keeping them here in comments just in case */
@@ -181,5 +171,9 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+
+  // prevents menu bar from being selected unnecessarily on ubuntu
+  "window.titleBarStyle": "custom",
+  "window.customMenuBarAltFocus": false,
 }
