@@ -129,6 +129,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load user defined config and alias files
 for f in ~/.aliases/*.sh; do source $f; done
+source ~/.scripts/remind.sh
 
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then
@@ -182,3 +183,5 @@ export SHEET_FILE='/home/kevin/Dropbox/tt/time-entries.json'
 export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 alias vim="vim -S ~/.vimrc"  # vim wasn't reading ~/.vimrc
+
+
