@@ -130,6 +130,7 @@ export NVM_DIR="$HOME/.nvm"
 # Load user defined config and alias files
 for f in ~/.aliases/*.sh; do source $f; done
 source ~/.scripts/remind.sh
+source ~/.scripts/gh-new.sh
 
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then

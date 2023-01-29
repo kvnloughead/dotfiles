@@ -12,7 +12,7 @@ function remind() {
   if [[ $COUNT -eq 0 || "$COMMAND" == "help" || "$COMMAND" == "--help" || "$COMMAND" == "-h" ]]; then
     echo "COMMAND"
     echo "  remind <message> <time>"
-    echo "  remind <command"
+    echo "  remind <command>"
     echo
     echo "DESCRIPTION"
     echo "  Displays notification at specified time"
