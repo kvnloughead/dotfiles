@@ -127,10 +127,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Load user defined config and alias files
-for f in ~/.aliases/*.sh; do source $f; done
+# Source aliases
+~/.bash_aliases
+
+# Source user defined config files
 source ~/.scripts/remind.sh
 source ~/.scripts/gh-new.sh
+source ~/.scripts/practicum.sh
 
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then
