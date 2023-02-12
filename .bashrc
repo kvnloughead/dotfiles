@@ -130,10 +130,9 @@ export NVM_DIR="$HOME/.nvm"
 # Source aliases
 ~/.bash_aliases
 
-# Source user defined config files
-source ~/.scripts/remind.sh
-source ~/.scripts/gh-new.sh
-source ~/.scripts/practicum.sh
+# Source user defined scripts files
+source ~/.scripts/index.sh
+
 
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then
