@@ -2,11 +2,9 @@ sort_string() {
   echo $1 | grep -o . | sort | tr -d '\n'
 }
 
-# makes backup of file in the cwd, preserving the extension
-# turns foo.baz.ext into foo.baz.bak.ext
+# makes backup of file in the cwd
 bak() {
-  FILENAME=$1
-  echo "${FILENAME%.*}".bak."${FILENAME##*.}"
+  cp $1 $1.bak
 }
 
 # Makes prompt "anonymous" by showing only $

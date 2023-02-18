@@ -127,8 +127,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Load user defined config and alias files
-for f in ~/.aliases/*.sh; do source $f; done
+# Source aliases
+~/.bash_aliases
+
+# Source user defined scripts files
+source ~/.scripts/index.sh
+
 
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then
@@ -180,3 +184,35 @@ fi
 export SHEET_FILE='/home/kevin/Dropbox/tt/time-entries.json'
 
 export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+alias vim="vim -S ~/.vimrc"  # vim wasn't reading ~/.vimrc
+
+###-begin-cb-completions-###
+#
+# yargs command completion script
+#
+# Installation: cb completion >> ~/.bashrc
+#    or cb completion >> ~/.bash_profile on OSX.
+#
+_cb_yargs_completions()
+{
+    local cur_word args type_list
+
+    cur_word="${COMP_WORDS[COMP_CWORD]}"
+    args=("${COMP_WORDS[@]}")
+
+    # ask yargs to generate completions.
+    type_list=$(cb --get-yargs-completions "${args[@]}")
+
+    COMPREPLY=( $(compgen -W "${type_list}" -- ${cur_word}) )
+
+    # if no match was found, fall back to filename completion
+    if [ ${#COMPREPLY[@]} -eq 0 ]; then
+      COMPREPLY=()
+    fi
+
+    return 0
+}
+complete -o bashdefault -o default -F _cb_yargs_completions cb
+###-end-cb-completions-###
+

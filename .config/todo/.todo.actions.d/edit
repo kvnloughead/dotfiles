@@ -1,0 +1,35 @@
+#!/bin/bash
+# Allows editing of a single todo item, selected by number. If no number is specified,
+# opens todo.txt in $EDITOR. Place this file in .todo.actions.d.
+
+case $2 in
+
+"usage"|"help")
+  echo 
+  echo "todo.sh $(basename $0) [ITEM_NUMBER]"
+  echo
+  echo "  Prompts user to edit the todo entry with corresponding #ITEM_NUMBER." 
+  echo "  The current entry will be loaded into the input field."
+  echo "  To clear the input field, try using ^U."
+  echo "  If ITEM_NUMBER isn't specified, opens \$TODO_DIR/todo.txt in \$EDITOR."
+  echo
+  ;;
+
+*)
+  if [[ -z $2 ]]; then
+    FILE=$TODO_FILE
+    if [ -n "$EDITOR" ]; then 
+      $EDITOR "$FILE" 
+    else 
+      echo "Error: The EDITOR environment variable is not set"
+    fi
+  else
+    FILE=$TODO_DIR/$2.txt
+    entry="$(todo.sh -p list | grep ^$2\\s | sed "s/$2//")" 
+    printf "Current entry: $entry\n"
+    read -e -i "$entry" -p 'Updated entry: ' newval
+    todo.sh -fn del $2 
+    todo.sh add $newval
+  fi
+  ;;
+esac
