@@ -32,3 +32,13 @@ alias serve="npx live-server --browser=${CHROME}"
 # node
 alias nr='npm run'
 alias node-wash="rm -rf node_modules && rm package-lock.json"
+
+# deno
+alias dr='deno run -A' # allows all permissions, no for use in prod
+
+# vscode
+alias c='code'
+alias c.='code .'
+alias ctutor='code --user-data-dir=$HOME/.config/Code/User/tutor'
+alias ct='ctutor'
+alias ct.='ctutor .'
