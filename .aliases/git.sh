@@ -2,7 +2,7 @@ alias g=git
 
 alias gl="git log"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gs='git status'
+alias gs='git status -sb'
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 
 alias gsw='git switch'
@@ -17,10 +17,6 @@ alias gaf='git add -f'
 
 alias gc='git commit'
 alias gca='git commit --amend'
-
-alias gaa='git add -A'
-alias gaac='git add -A && git commit'
-alias gaaca='git add -A && git commit --amend'
 
 alias gp='git push origin HEAD'
 
