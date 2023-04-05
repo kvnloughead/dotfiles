@@ -1,4 +1,4 @@
-for f in ~/.aliases/*.sh; do source $f; done
+dfor f in ~/.aliases/*.sh; do source $f; done
 
 alias c="code"
 
@@ -31,6 +31,10 @@ alias serve="npx live-server --browser=${CHROME}"
 
 # node
 alias nr='npm run'
+alias ni='npm install'
+alias nrs='npm run start'
+alias nrd='npm run dev'
+alias nrb='npm run build'
 alias node-wash="rm -rf node_modules && rm package-lock.json"
 
 # deno
@@ -42,3 +46,6 @@ alias c.='code .'
 alias ctutor='code --user-data-dir=$HOME/.config/Code/User/tutor'
 alias ct='ctutor'
 alias ct.='ctutor .'
+
+# dev
+alias cbdev='node ~/dev/cb/bin/index.js'
