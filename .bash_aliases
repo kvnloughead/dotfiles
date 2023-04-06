@@ -1,4 +1,4 @@
-dfor f in ~/.aliases/*.sh; do source $f; done
+for f in ~/.aliases/*.sh; do source $f; done
 
 alias c="code"
 
