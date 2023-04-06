@@ -133,7 +133,6 @@ export NVM_DIR="$HOME/.nvm"
 # Source user defined scripts files
 source ~/.scripts/index.sh
 
-
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
