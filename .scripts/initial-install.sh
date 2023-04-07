@@ -71,6 +71,7 @@ function initial-dotfiles-install() {
 
   # etc
   sudo apt install xclip
+  sudo apt install jq
 
   # below here requires GitHub SSH authentication
   # probably should make a separate, private script?
