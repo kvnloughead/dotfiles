@@ -127,11 +127,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Source aliases
-~/.bash_aliases
-
 # Source user defined scripts files
 source ~/.scripts/index.sh
+if [ -f ~/practicum/scripts/index.sh ]; then
+    . ~/practicum/scripts/index.sh
+fi
 
 # If installed, load pyenv
 if [[ $(command -v pyenv) ]]; then
