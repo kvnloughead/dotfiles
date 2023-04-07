@@ -215,3 +215,6 @@ _cb_yargs_completions()
 complete -o bashdefault -o default -F _cb_yargs_completions cb
 ###-end-cb-completions-###
 
+# deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"

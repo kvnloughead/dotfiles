@@ -26,6 +26,13 @@ function initial-dotfiles-install() {
     sudo apt install apt-transport-https
     sudo apt update
     sudo apt install code    
+
+    # obs
+    sudo apt install software-properties-common
+    sudo add-apt-repository ppa:obsproject/obs-studio
+    sudo apt update
+    sudo apt install obs-studio
+    
   fi
   
   # git
@@ -58,6 +65,9 @@ function initial-dotfiles-install() {
   # install useful node packages
   npm i -g live-server
   sudo apt install node-typescript
+
+  # deno
+  curl -fsSL https://deno.land/x/install/install.sh | sh
 
   # etc
   sudo apt install xclip
