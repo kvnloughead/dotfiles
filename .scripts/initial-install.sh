@@ -72,6 +72,7 @@ function initial-dotfiles-install() {
   # etc
   sudo apt install xclip
   sudo apt install jq
+  sudo apt install vim # apparently not on Mint by default
 
   # below here requires GitHub SSH authentication
   # probably should make a separate, private script?
@@ -84,12 +85,21 @@ function initial-dotfiles-install() {
   cd ~ && mkdir dev && cd dev
   git clone git@github.com:kvnloughead/blog.git
   git clone git@github.com:kvnloughead/command-line-notes.git
-  git clone git@github.com:kvnloughead/clipboard-manager.git
   cd command-line-notes && pip install -r requirements.txt
   cd ~
 
+  # CB
+  cd ~
+  git clone git@github.com:kvnloughead/clipboard-manager.git cb
+  cd cb
+  npm install
+  npm install -g .
+  node setup.js -y
+
   # make `bin` dir and set up some utilities
   cd ~ && mkdir bin && cd bin
+
+  
 
   # CLN
   git clone git@github.com:kvnloughead/command-line-notes.git
