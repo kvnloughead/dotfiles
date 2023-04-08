@@ -14,8 +14,8 @@ function initial-dotfiles-install() {
     # 1password
     echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
     curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-    sudo apt update
-    sudo apt install 1password
+    sudo apt-get update -y
+    sudo apt-get install -y 1password
 
     # vscode
     sudo apt-get install wget gpg
@@ -23,20 +23,20 @@ function initial-dotfiles-install() {
     sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
     sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
     rm -f packages.microsoft.gpg
-    sudo apt install apt-transport-https
-    sudo apt update
-    sudo apt install code    
+    sudo apt-get install -y apt-transport-https
+    sudo apt-get update -y
+    sudo apt-get install -y code    
 
     # obs
-    sudo apt install software-properties-common
+    sudo apt-get install -y software-properties-common
     sudo add-apt-repository ppa:obsproject/obs-studio
-    sudo apt update
-    sudo apt install obs-studio
+    sudo apt-get update -y
+    sudo apt-get install -y obs-studio
     
   fi
   
   # git
-  sudo apt install git
+  sudo apt-get install -y git
   git config --global user.name = "Kevin Loughead"
   git config --global user.email = "kvnloughead@gmail.com"
   git config --global init.defaultBranch main
@@ -44,10 +44,10 @@ function initial-dotfiles-install() {
   # github CLI
   curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-  sudo apt install gh
+  sudo apt-get install -y gh
 
   # install python3-pip if not present
-  which pip3 || sudo apt install python3-pip
+  which pip3 || sudo apt-get install -y python3-pip
   # install pyenv. Necessary loading code already added to ~/.bashrc
   sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
@@ -56,6 +56,7 @@ function initial-dotfiles-install() {
 
   # node related
   # install n package manager, then install node
+  sudo apt-get remove -y nodejs # remove existing installation
   mkdir ~/utils
   curl -L https://git.io/n-install | N_PREFIX=~/util/n bash -s -- -y
   # install latest and current versions of node
@@ -64,15 +65,15 @@ function initial-dotfiles-install() {
 
   # install useful node packages
   npm i -g live-server
-  sudo apt install node-typescript
+  sudo apt-get install -y node-typescript
 
   # deno
   curl -fsSL https://deno.land/x/install/install.sh | sh
 
   # etc
-  sudo apt install xclip
-  sudo apt install jq
-  sudo apt install vim # apparently not on Mint by default
+  sudo apt-get install -y xclip
+  sudo apt-get install -y jq
+  sudo apt-get install -y vim # apparently not on Mint by default
 
   # below here requires GitHub SSH authentication
   # probably should make a separate, private script?
@@ -88,8 +89,8 @@ function initial-dotfiles-install() {
   cd command-line-notes && pip install -r requirements.txt
   cd ~
 
-  # CB
-  cd ~
+  # clipboard manager
+  cd ~/dev
   git clone git@github.com:kvnloughead/clipboard-manager.git cb
   cd cb
   npm install
@@ -98,8 +99,6 @@ function initial-dotfiles-install() {
 
   # make `bin` dir and set up some utilities
   cd ~ && mkdir bin && cd bin
-
-  
 
   # CLN
   git clone git@github.com:kvnloughead/command-line-notes.git
