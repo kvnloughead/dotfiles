@@ -8,3 +8,5 @@
 	defaultBranch = main
 [core]
 	editor = nano
+[alias]
+	sw = switch
