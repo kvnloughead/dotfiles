@@ -31,14 +31,14 @@ function initial-dotfiles-install() {
     sudo apt-get install -y software-properties-common
     sudo add-apt-repository ppa:obsproject/obs-studio
     sudo apt-get update -y
-    sudo apt-get install -y obs-studio
-    
+    sudo apt-get install -y obs-studio    
+
   fi
   
   # git
   sudo apt-get install -y git
-  git config --global user.name = "Kevin Loughead"
-  git config --global user.email = "kvnloughead@gmail.com"
+  git config --global user.name "Kevin Loughead"
+  git config --global user.email "kvnloughead@gmail.com"
   git config --global init.defaultBranch main
 
   # github CLI
@@ -107,6 +107,16 @@ function initial-dotfiles-install() {
   git init
   git remote add origin git@github.com:kvnloughead/notes.git
   git pull origin main
+
+  # todotxt
+  cd dev
+  git clone git@github.com:todotxt/todo.txt-cli.git
+  cd todo.txt-cli
+  sudo apt-get install -y install build-essential
+  make
+  sudo make install CONFIG_DIR=$HOME/Dropbox/todo
+  cd ~
+  rm -rf todo.txt-cli
 
   # If using WSL, map xdg-open command to wslview
   if grep -iE '(microsoft|wsl)' /proc/version
