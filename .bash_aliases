@@ -49,3 +49,12 @@ alias ct.='ctutor .'
 
 # dev
 alias cbdev='node ~/dev/cb/bin/index.js'
+
+# zip
+function zp() {
+  # Usage: zp <output_file> <input_directory>
+  # Zip all files in <input_directory> except for .git and node_modules, and save the archive to <output_file>.
+  local output_file="$1"
+  local input_dir="$2"
+  zip -r "$output_file" "$input_dir" -x \*.git/* -x \*node_modules/*
+}
