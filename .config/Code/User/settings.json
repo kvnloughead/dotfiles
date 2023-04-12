@@ -166,7 +166,7 @@
     "*.html": "html",
     "*.erb": "erb"
   },
-  "workbench.colorTheme": "Monokai",
+  "workbench.colorTheme": "Default Light+",
   "[erb]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
@@ -176,4 +176,5 @@
   // prevents menu bar from being selected unnecessarily on ubuntu
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
+  "tabnine.experimentalAutoImports": true,
 }
