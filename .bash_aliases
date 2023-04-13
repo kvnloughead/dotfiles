@@ -50,6 +50,15 @@ alias ct.='ctutor .'
 # dev
 alias cbdev='node ~/dev/cb/bin/index.js'
 
+
+# cb
+alias cbo='cb o'
+alias cbl='cb l'
+alias cbg='cb g'
+alias cbs='cb s'
+alias cbrm='cb rm'
+
+
 # zip
 function zp() {
   # Usage: zp <output_file> <input_directory>
