@@ -70,6 +70,22 @@ function initial-dotfiles-install() {
   # deno
   curl -fsSL https://deno.land/x/install/install.sh | sh
 
+  # mongodb
+  sudo apt-get install gnupg
+  curl -fsSL https://pgp.mongodb.com/server-6.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg \
+   --dearmor
+  echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg] http://repo.mongodb.org/apt/debian bullseye/mongodb-org/6.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+  sudo apt-get install -y mongodb-org
+  sudo systemctl enable mongod
+  # After installation, verify it's working with `sudo systemctl enable mongod`
+  # If not, then try these steps
+  # source https://stackoverflow.com/questions/60309575/mongodb-service-failed-with-result-exit-code
+    # sudo rm -rf /tmp/mongodb-27017.sock
+    # sudo systemctl enable mongod
+    # sudo chown -R mongodb:mongodb /var/lib/mongodb
+    # sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
+
   # etc
   sudo apt-get install -y xclip
   sudo apt-get install -y jq

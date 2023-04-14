@@ -160,7 +160,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="~/data/db:$PATH"
 export PATH="$PATH:$HOME/.scripts"
 
-export EDITOR='vim'
+export EDITOR='code'
 export gh='https://github.com/kvnloughead/'
 export lh='http://localhost'
 

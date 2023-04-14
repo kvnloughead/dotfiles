@@ -118,6 +118,9 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[md]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -166,15 +169,15 @@
     "*.html": "html",
     "*.erb": "erb"
   },
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Visual Studio Light",
   "[erb]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
   },
-  "window.zoomLevel": 1,
 
   // prevents menu bar from being selected unnecessarily on ubuntu
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
   "tabnine.experimentalAutoImports": true,
+  "codegpt.apiKey": "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"
 }
