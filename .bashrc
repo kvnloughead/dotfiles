@@ -161,6 +161,7 @@ export PATH="~/data/db:$PATH"
 export PATH="$PATH:$HOME/.scripts"
 
 export EDITOR='code'
+export EDITOR='nano'
 export gh='https://github.com/kvnloughead/'
 export lh='http://localhost'
 
@@ -218,3 +219,10 @@ complete -o bashdefault -o default -F _cb_yargs_completions cb
 # deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+if [ $(hostname) == "hp-laptop" ]; then
+    setxkbmap -option 'ctrl:ralt_rctrl'
+fi
+
+
+
