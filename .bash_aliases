@@ -38,7 +38,10 @@ alias nrb='npm run build'
 alias node-wash="rm -rf node_modules && rm package-lock.json"
 
 # deno
-alias dr='deno run -A' # allows all permissions, no for use in prod
+alias dr='deno run'
+alias dra='deno run -A' # allows all permissions, no for use in prod
+alias dt='deno task'
+alias dtd='deno task dev'
 
 # vscode
 alias c='code'
