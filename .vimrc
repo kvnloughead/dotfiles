@@ -7,3 +7,11 @@ set number
 set hlsearch       
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+noremap j h
+noremap k j
+noremap i k
+noremap ii i
+inoremap jj <ESC>
+
+:colorscheme slate
+
