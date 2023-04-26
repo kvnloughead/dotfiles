@@ -10,6 +10,8 @@ alias gswc='git switch -c'
 alias gb='git branch'
 alias gm='git merge'
 
+alias gr='git remote'
+
 alias ga='git add'
 alias gac='git add -A && git commit'
 alias gaca='git add -A && git commit --amend'
