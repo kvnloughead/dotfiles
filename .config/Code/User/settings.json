@@ -179,5 +179,26 @@
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
   "tabnine.experimentalAutoImports": true,
-  "codegpt.apiKey": "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"
+  "codegpt.apiKey": "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",
+
+  // audio cues
+  "audioCues.diffLineDeleted": "off",
+  "audioCues.diffLineInserted": "off",
+  "audioCues.diffLineModified": "off",
+  "audioCues.lineHasBreakpoint": "off",
+  "audioCues.lineHasError": "off",
+  "audioCues.lineHasInlineSuggestion": "off",
+  "audioCues.noInlayHints": "off",
+  "audioCues.notebookCellCompleted": "off",
+  "audioCues.notebookCellFailed": "off",
+  "audioCues.onDebugBreak": "off",
+  "audioCues.taskCompleted": "off",
+  "audioCues.taskFailed": "off",
+  "audioCues.terminalCommandFailed": "off",
+  "audioCues.terminalQuickFix": "off",
+  "audioCues.lineHasFoldedArea": "off",
+
+  // deno
+  "deno.enable": true,
+  "deno.unstable": true
 }

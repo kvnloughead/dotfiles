@@ -30,14 +30,11 @@
     "command": "-cursorEndSelect",
     "when": "textInputFocus"
   },
+
+  // end of line
   {
     "key": "alt+left",
     "command": "cursorHome",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "home",
-    "command": "-cursorHome",
     "when": "textInputFocus"
   },
   {
@@ -46,19 +43,46 @@
     "when": "textInputFocus"
   },
   {
-    "key": "shift+home",
-    "command": "-cursorHomeSelect",
+    "key": "alt+q",
+    "command": "cursorHome",
     "when": "textInputFocus"
   },
   {
-    "key": "ctrl+shift+alt+\\",
-    "command": "-jupyter.selectCell",
-    "when": "editorTextFocus && jupyter.hascodecells && !notebookEditorFocused"
+    "key": "shift+alt+q",
+    "command": "cursorHomeSelect",
+    "when": "textInputFocus"
   },
   {
-    "key": "ctrl+shift+alt+\\",
-    "command": "editor.action.selectToBracket"
+    "key": "alt+e",
+    "command": "cursorEnd",
+    "when": "textInputFocus"
   },
+  {
+    "key": "shift+alt+e",
+    "command": "cursorEndSelect",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+o",
+    "command": "cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+alt+o",
+    "command": "cursorEndSelect",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+u",
+    "command": "cursorHome",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+alt+u",
+    "command": "cursorHomeSelect",
+    "when": "textInputFocus"
+  },
+
   {
     "key": "ctrl+, ctrl+.",
     "command": "workbench.action.openSettingsJson"
@@ -171,7 +195,7 @@
     "command": "editor.emmet.action.balanceIn"
   },
   {
-    "key": "ctrl+shift+alt+up",
+    "key": "ctrl+alt+w",
     "command": "editor.action.insertCursorAbove",
     "when": "editorTextFocus"
   },
@@ -181,7 +205,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+shift+alt+down",
+    "key": "ctrl+alt+s",
     "command": "editor.action.insertCursorBelow",
     "when": "editorTextFocus"
   },
@@ -202,12 +226,12 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+i",
+    "key": "ctrl+alt+i",
     "command": "block-travel.jumpUp",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+k",
+    "key": "ctrl+alt+k",
     "command": "block-travel.jumpDown",
     "when": "editorTextFocus"
   },
@@ -259,8 +283,16 @@
   },
 
   // word left / right
-  { "key": "ctrl+j", "command": "cursorWordLeft", "when": "textInputFocus" },
-  { "key": "ctrl+l", "command": "cursorWordRight", "when": "textInputFocus" },
+  {
+    "key": "ctrl+alt+j",
+    "command": "cursorWordLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+alt+l",
+    "command": "cursorWordRight",
+    "when": "textInputFocus"
+  },
   {
     "key": "ctrl+shift+j",
     "command": "cursorWordLeftSelect",
@@ -270,5 +302,48 @@
     "key": "ctrl+shift+l",
     "command": "cursorWordEndRightSelect",
     "when": "textInputFocus"
+  },
+
+  // backspace / delete
+  { "key": "alt+h", "command": "deleteLeft", "when": "textInputFocus" },
+  {
+    "key": "alt+;",
+    "command": "deleteRight",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+alt+h",
+    "command": "deleteWordLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+alt+;",
+    "command": "deleteWordRight",
+    "when": "textInputFocus"
+  },
+
+  // move line up / down
+  {
+    "key": "alt+w",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+s",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  {
+    "key": "alt+x",
+    "command": "editor.action.clipboardCutAction"
+  },
+  {
+    "key": "alt+z",
+    "command": "undo"
+  },
+  {
+    "key": "shift+alt+z",
+    "command": "redo"
   }
 ]

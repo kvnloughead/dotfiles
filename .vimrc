@@ -16,12 +16,11 @@ noremap i k
 inoremap hh <ESC>
 noremap h i
 
-" visuals
+" default color scheme (dark mode) 
 :colorscheme slate
 
 function! Toggle_Light_Dark_Colorscheme()
     if system('tmux show-environment THEME')[0:9] == 'THEME=dark'
-        echo "Light
         :silent :!tmux set-environment THEME 'light'
         :silent :!tmux source-file ~/.tmux_light.conf
     else
@@ -40,6 +39,16 @@ function! SetColorScheme()
     endif
 endfunction
 
+" can call this with \o
 nnoremap <Leader>o :call Toggle_Light_Dark_Colorscheme()<cr>
+
+" I'm not sure which of these is working so I'll keep them all for now 
+" Still doesn't work when focus is gained though. In that case, you
+" need to manually call the toggler with \o
+autocmd BufEnter * :call SetColorScheme()
+autocmd VimEnter * :call SetColorScheme()
+autocmd FocusLost * :call SetColorScheme()
 autocmd FocusGained * :call SetColorScheme()
+
+
 

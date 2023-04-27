@@ -228,22 +228,16 @@ fi
 
 # start tmux by default (with appropriate theme)
 if command -v tmux>/dev/null; then
-    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux new-session -A -s main
+    # prevents starting in tmux if terminal is in a vscode instance
+    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && [ "${TERM_PROGRAM}" != "vscode" ] && tmux new-session -A -s main
 
     # check if we have been switched to light, else go dark
     [[ ! $(tmux show-environment | grep THEME) =~ 'THEME=light' ]] && 
     tmux set-environment THEME dark
 fi
 
-# Set the prompt theme based on the value of the tmux option
-# PS1_LIGHT='\[\e[38;5;240m\]\u@\h:\w\$ \[\e[0m\]'
-# PS1_DARK='\[\e[38;5;254m\]\u@\h:\w\$ \[\e[0m\]'
-
-
-PS1_DARK='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
-PS1_LIGHT='${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\u@\h\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
-
-
+PS1_DARK='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
+PS1_LIGHT='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
 
 set_prompt_theme() {
   if [ "$(tmux show-environment | grep THEME | cut -d'=' -f2)" = 'dark' ]; then
