@@ -33,3 +33,23 @@ gcp() {
 
 alias gph='git push heroku'
 export giturl="git@github.com:kvnloughead"
+
+function getremote() {
+	# gets remote of cwd if cwd is a git repo
+	# loads the remote as an ssh url to the clipboard
+  local remote=$(git config --get remote.origin.url)
+	echo $remote
+  if [[ "$remote" =~ ^https:// || git@github.com: ]]; then
+    remote=${remote/https:\/\/github.com\//git@github.com:}
+    remote=${remote/https:\/\/gitlab.com\//git@gitlab.com:}
+    remote=${remote/https:\/\/bitbucket.org\//git@bitbucket.org:}
+    remote=${remote/git:\/\/github.com\//git@github.com:}
+    remote=${remote/git:\/\/gitlab.com\//git@gitlab.com:}
+    remote=${remote/git:\/\/bitbucket.org\//git@bitbucket.org:}
+    echo "$remote" | xclip -selection clipboard
+    echo "Remote repo copied to clipboard in SSH format"
+  else
+    echo "Not a Git repo or remote URL not recognized"
+  fi
+}
+
