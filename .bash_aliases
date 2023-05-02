@@ -1,6 +1,16 @@
 for f in ~/.aliases/*.sh; do source $f; done
 
-alias c="code"
+# editors
+alias c='code'
+alias c.='code .'
+alias c~='code ~'
+
+alias ctutor='code --user-data-dir=$HOME/.config/Code/User/tutor'
+alias ct='ctutor'
+alias ct.='ctutor .'
+
+alias v="vim"
+alias n="nano"
 
 # navigation
 alias ~="cd ~"
@@ -13,9 +23,9 @@ mkcd() {
   cd $1
 }
 
-# convenience
 alias cl="clear"
 alias src="source ~/.bashrc"
+alias srctmux="tmux source-file ~/.tmux.conf"
 alias tree="tree -I node_modules"
 
 alias lsa="ls -a"
@@ -40,16 +50,9 @@ alias node-wash="rm -rf node_modules && rm package-lock.json"
 
 # deno
 alias dr='deno run'
-alias dra='deno run -A' # allows all permissions, no for use in prod
+alias dra='deno run -A' # allows all permissions, not for use in prod
 alias dt='deno task'
 alias dtd='deno task dev'
-
-# vscode
-alias c='code'
-alias c.='code .'
-alias ctutor='code --user-data-dir=$HOME/.config/Code/User/tutor'
-alias ct='ctutor'
-alias ct.='ctutor .'
 
 # dev
 alias cbdev='node ~/dev/cb/bin/index.js'

@@ -2,15 +2,13 @@ alias g=git
 
 alias gl="git log"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gs='git status -sb'
+alias gs='git status'
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 
 alias gsw='git switch'
 alias gswc='git switch -c'
 alias gb='git branch'
 alias gm='git merge'
-
-alias gr='git remote'
 
 alias ga='git add'
 alias gac='git add -A && git commit'
@@ -21,6 +19,10 @@ alias gc='git commit'
 alias gca='git commit --amend'
 
 alias gp='git push origin HEAD'
+
+alias gr='git remote'
+alias gst='git stash'
+alias gcl="git clone"
 
 alias githardpull='git reset HEAD --hard && git pull'
 
