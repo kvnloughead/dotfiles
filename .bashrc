@@ -250,3 +250,5 @@ set_prompt_theme
 
 alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'; set_prompt_theme"
 alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'; set_prompt_theme"
+
+source <(min completions bash)
