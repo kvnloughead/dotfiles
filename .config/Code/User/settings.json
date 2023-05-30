@@ -169,7 +169,7 @@
     "*.html": "html",
     "*.erb": "erb"
   },
-  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.colorTheme": "Monokai",
   "[erb]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
@@ -196,9 +196,5 @@
   "audioCues.taskFailed": "off",
   "audioCues.terminalCommandFailed": "off",
   "audioCues.terminalQuickFix": "off",
-  "audioCues.lineHasFoldedArea": "off",
-
-  // deno
-  "deno.enable": true,
-  "deno.unstable": true
+  "audioCues.lineHasFoldedArea": "off"
 }
