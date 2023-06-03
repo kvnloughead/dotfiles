@@ -13,7 +13,6 @@ alias v="vim"
 alias n="nano"
 
 # navigation
-alias ~="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -35,8 +34,10 @@ alias lsal="ls -alhF"
 # scripts
 alias crc='crc.sh'    # "Create React Component"
 
-# live-server
+# browsers
 alias serve="npx live-server --browser=chromium"
+alias ff="firefox"
+alias chr="chromium"
 
 # node
 alias nr='npm run'
@@ -57,14 +58,12 @@ alias dtd='deno task dev'
 # dev
 alias cbdev='node ~/dev/cb/bin/index.js'
 
-
 # cb
 alias cbo='cb o'
 alias cbl='cb l'
 alias cbg='cb g'
 alias cbs='cb s'
 alias cbrm='cb rm'
-
 
 # zip
 function zp() {
@@ -74,3 +73,8 @@ function zp() {
   local input_dir="$2"
   zip -r "$output_file" "$input_dir" -x \*.git/* -x \*node_modules/*
 }
+
+# min
+
+alias blog="min --cfg $HOME/.config/min/blog.json"
+alias til="min --cfg $HOME/.config/min/til.json"
