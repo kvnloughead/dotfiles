@@ -10,3 +10,5 @@
 	editor = nano
 [alias]
 	sw = switch
+[branch]
+	autoSetupMerge = always

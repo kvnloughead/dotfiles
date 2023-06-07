@@ -18,4 +18,9 @@ alias dgc='dotgit commit'
 alias dgca='dotgit commit --amend'
 alias dgp='dotgit push origin HEAD'
 
-alias dgrep='cd ~ && dotgit grep'
+alias dgst='dotgit stash'
+
+function dgrep() {
+  # cd's home, greps the dotgit repo, and cd's back to cwd 
+  cd && dotgit grep $1; cd -
+}
