@@ -169,7 +169,6 @@
     "*.html": "html",
     "*.erb": "erb"
   },
-  "workbench.colorTheme": "Monokai",
   "[erb]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
@@ -196,5 +195,9 @@
   "audioCues.taskFailed": "off",
   "audioCues.terminalCommandFailed": "off",
   "audioCues.terminalQuickFix": "off",
-  "audioCues.lineHasFoldedArea": "off"
+  "audioCues.lineHasFoldedArea": "off",
+  "workbench.colorTheme": "Default Light Modern",
+
+  // add multicursors on ctrl click instead of alt click
+  "editor.multiCursorModifier": "ctrlCmd"
 }
