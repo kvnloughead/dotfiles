@@ -129,8 +129,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Source user defined scripts files
 source ~/.scripts/index.sh
-if [ -f ~/practicum/scripts/index.sh ]; then
-    . ~/practicum/scripts/index.sh
+if [ -f ~/tripleten/scripts/index.sh ]; then
+    . ~/tripleten/scripts/index.sh
 fi
 
 # If installed, load pyenv
