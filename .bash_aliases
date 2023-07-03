@@ -31,13 +31,15 @@ alias lsa="ls -a"
 alias lsl="ls -lhF"
 alias lsal="ls -alhF"
 
+alias clip="xclip -sel clipboard"
+
 # scripts
 alias crc='crc.sh'    # "Create React Component"
 
 # browsers
-alias serve="npx live-server --browser=chromium"
+alias serve="npx live-server --browser=google-chrome"
 alias ff="firefox"
-alias chr="chromium"
+alias chr="google-chrome"
 
 # node
 alias nr='npm run'
@@ -75,6 +77,5 @@ function zp() {
 }
 
 # min
-
 alias blog="min --cfg $HOME/.config/min/blog.json"
 alias til="min --cfg $HOME/.config/min/til.json"
