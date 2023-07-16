@@ -248,7 +248,7 @@ set_prompt_theme() {
 }
 set_prompt_theme
 
-alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y'"
-alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y-Dark'"
+alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'Default Light Modern'"
+alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y-Dark'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'GitHub Dark Dimmed'"
 
 source <(min completions bash)
