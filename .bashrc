@@ -239,6 +239,8 @@ fi
 PS1_DARK='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
 PS1_LIGHT='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
 
+PS1_TRIPLETEN='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@tripleten\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
+
 set_prompt_theme() {
   if [ "$(tmux show-environment | grep THEME | cut -d'=' -f2)" = 'dark' ]; then
     PS1="$PS1_DARK"
