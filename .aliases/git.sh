@@ -56,3 +56,11 @@ function getremote() {
   fi
 }
 
+function fetchswitch() {
+  # fetches from origin, switches to fetched branch and sets the upstream
+  git fetch origin $1
+  git switch $1
+  git branch --set-upstream-to=origin/$1
+}
+
+
