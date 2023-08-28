@@ -37,7 +37,7 @@ alias clip="xclip -sel clipboard"
 alias crc='crc.sh'    # "Create React Component"
 
 # browsers
-alias serve="npx live-server --browser=google-chrome"
+alias serve="npx live-server --browser=chromium"
 alias ff="firefox"
 alias chr="google-chrome"
 
@@ -79,3 +79,6 @@ function zp() {
 # min
 alias blog="min --cfg $HOME/.config/min/blog.json"
 alias til="min --cfg $HOME/.config/min/til.json"
+
+# updates
+alias update-vscode="sudo apt update && sudo apt-get upgrade code"
