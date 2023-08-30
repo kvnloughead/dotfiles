@@ -82,3 +82,19 @@ alias til="min --cfg $HOME/.config/min/til.json"
 
 # updates
 alias update-vscode="sudo apt update && sudo apt-get upgrade code"
+
+function copy_last_command {
+    # Get the most recent command from the history. If run in the terminal, 
+    # this returns itself. But run in this script, it returns the previous 
+    # command. Might not be a robust solution. 
+    command=$(fc -ln -1)
+    
+    # Remove leading and trailing whitespace
+    command=$(echo $command | xargs)
+    
+    # Pipe the command into xclip to load it to the clipboard
+    echo $command | xclip -selection clipboard
+    
+    echo "Command copied to clipboard: $command"
+}
+
