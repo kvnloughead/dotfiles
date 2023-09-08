@@ -3,6 +3,7 @@ for f in ~/.aliases/*.sh; do source $f; done
 # editors
 alias c='code'
 alias c.='code .'
+alias c..='code ..'
 alias c~='code ~'
 
 alias ctutor='code --user-data-dir=$HOME/.config/Code/User/tutor'
