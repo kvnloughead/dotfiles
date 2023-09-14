@@ -70,10 +70,17 @@ alias cbrm='cb rm'
 
 # zip
 function zp() {
-  # Usage: zp <output_file> <input_directory>
+  # Usage: zp <input_directory> <output_file>
   # Zip all files in <input_directory> except for .git and node_modules, and save the archive to <output_file>.
-  local output_file="$1"
-  local input_dir="$2"
+  if [ "$#" -eq 1 ]; then
+    local output_file="${1//\//}".zip
+    local input_dir="$1"
+    echo $output_file
+  else
+    local input_dir="$1"
+    local output_file="$2"
+  fi
+
   zip -r "$output_file" "$input_dir" -x \*.git/* -x \*node_modules/*
 }
 
