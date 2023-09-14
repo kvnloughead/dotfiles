@@ -50,7 +50,7 @@ alias nrd='npm run dev'
 alias nird='ni && nrd'
 alias nirs='ni && nrs'
 alias nrb='npm run build'
-alias node-wash="rm -rf node_modules && rm package-lock.json"
+alias node-wash="rm -rf node_modules && rm package-lock.json && npm i"
 
 # deno
 alias dr='deno run'
