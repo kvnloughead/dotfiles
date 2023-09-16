@@ -173,13 +173,11 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
   },
-
   // prevents menu bar from being selected unnecessarily on ubuntu
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
   "tabnine.experimentalAutoImports": true,
   "codegpt.apiKey": "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",
-
   // audio cues
   "audioCues.diffLineDeleted": "off",
   "audioCues.diffLineInserted": "off",
@@ -197,7 +195,8 @@
   "audioCues.terminalQuickFix": "off",
   "audioCues.lineHasFoldedArea": "off",
   "workbench.colorTheme": "Default Light Modern",
-
   // add multicursors on ctrl click instead of alt click
-  "editor.multiCursorModifier": "ctrlCmd"
+  "editor.multiCursorModifier": "ctrlCmd",
+  "workbench.startupEditor": "none",
+  "svelte.enable-ts-plugin": true
 }

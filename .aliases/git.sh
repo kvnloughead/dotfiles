@@ -44,12 +44,11 @@ function fetchswitch() {
   git branch --set-upstream-to=origin/$1
 }
 
-function getremote() {
+function get_remote() {
 	# gets remote of cwd if cwd is a git repo
 	# loads the remote as an ssh url to the clipboard
 
   local remote=$(git config --get remote.origin.url)
-	echo $remote
   if [[ "$remote" =~ ^https:// || git@github.com: ]]; then
     remote=${remote/https:\/\/github.com\//git@github.com:}
     remote=${remote/https:\/\/gitlab.com\//git@gitlab.com:}
@@ -57,28 +56,76 @@ function getremote() {
     remote=${remote/git:\/\/github.com\//git@github.com:}
     remote=${remote/git:\/\/gitlab.com\//git@gitlab.com:}
     remote=${remote/git:\/\/bitbucket.org\//git@bitbucket.org:}
-    echo "$remote" | xclip -selection clipboard
-    echo "Remote repo copied to clipboard in SSH format"
+    if [ -t 1 ]; then 
+      # if output is a terminal, log a message
+      echo "Remote repo copied to clipboard"
+      echo "$remote"
+      echo "$remote" | xclip -selection clipboard
+    else 
+      # if in a pipe, just log the remote
+      echo "$remote"
+    fi
   else
     echo "Not a Git repo or remote URL not recognized"
   fi
 
 }
 
+# function swap_git_url {
+#    local url
+
+#     if [[ -n $1 ]]; then
+#         url="$1"
+#     else
+#         read url
+#     fi
+
+#     if [[ $1 == "--help" || $1 == "-h" || $1 == "help" ]]; then
+#         echo ""
+#         echo "Usage: git_swap_url repo-url"
+#         echo ""
+#         echo "Converts a GitHub HTTPS URL to SSH format or vice versa."
+#         echo ""
+#         echo "Options:"
+#         echo "  --help, -h   display this help and exit"
+#         echo ""
+#         return
+#     fi
+
+#     local url="$1"
+
+#     if [[ $url == https://github.com/* ]]; then
+#         local ssh_url="${url/https:\/\/github.com\//git@github.com:}"
+#         ssh_url="${ssh_url/.git/}.git"
+#         echo "$ssh_url"
+#         echo "$ssh_url" | xclip -selection clipboard
+#     elif [[ $url == git@github.com:* ]]; then
+#         local https_url="${url/git@github.com:/https://github.com/}"
+#         https_url="${https_url/.git/}.git"
+#         echo "$https_url"
+#         echo "$https_url" | xclip -selection clipboard
+#     else
+#         echo "Invalid GitHub URL."
+#     fi
+# }
+
 function swap_git_url {
-    if [[ $1 == "--help" || $1 == "-h" || $1 == "help" ]]; then
-        echo ""
+    local url
+
+    if [[ -n $1 ]]; then
+        url="$1"
+    else
+        read url
+    fi
+
+    if [[ $url == "--help" || $url == "-h" || $url == "help" ]]; then
         echo "Usage: git_swap_url repo-url"
-        echo ""
         echo "Converts a GitHub HTTPS URL to SSH format or vice versa."
         echo ""
         echo "Options:"
         echo "  --help, -h   display this help and exit"
-        echo ""
         return
     fi
-
-    local url="$1"
 
     if [[ $url == https://github.com/* ]]; then
         local ssh_url="${url/https:\/\/github.com\//git@github.com:}"
@@ -94,5 +141,6 @@ function swap_git_url {
         echo "Invalid GitHub URL."
     fi
 }
+
 
 
