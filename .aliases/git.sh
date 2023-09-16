@@ -37,9 +37,17 @@ gcp() {
 alias gph='git push heroku'
 export giturl="git@github.com:kvnloughead"
 
+function fetchswitch() {
+  # fetches from origin, switches to fetched branch and sets the upstream
+  git fetch origin $1
+  git switch $1
+  git branch --set-upstream-to=origin/$1
+}
+
 function getremote() {
 	# gets remote of cwd if cwd is a git repo
 	# loads the remote as an ssh url to the clipboard
+
   local remote=$(git config --get remote.origin.url)
 	echo $remote
   if [[ "$remote" =~ ^https:// || git@github.com: ]]; then
@@ -54,13 +62,37 @@ function getremote() {
   else
     echo "Not a Git repo or remote URL not recognized"
   fi
+
 }
 
-function fetchswitch() {
-  # fetches from origin, switches to fetched branch and sets the upstream
-  git fetch origin $1
-  git switch $1
-  git branch --set-upstream-to=origin/$1
+function swap_git_url {
+    if [[ $1 == "--help" || $1 == "-h" || $1 == "help" ]]; then
+        echo ""
+        echo "Usage: git_swap_url repo-url"
+        echo ""
+        echo "Converts a GitHub HTTPS URL to SSH format or vice versa."
+        echo ""
+        echo "Options:"
+        echo "  --help, -h   display this help and exit"
+        echo ""
+        return
+    fi
+
+    local url="$1"
+
+    if [[ $url == https://github.com/* ]]; then
+        local ssh_url="${url/https:\/\/github.com\//git@github.com:}"
+        ssh_url="${ssh_url/.git/}.git"
+        echo "$ssh_url"
+        echo "$ssh_url" | xclip -selection clipboard
+    elif [[ $url == git@github.com:* ]]; then
+        local https_url="${url/git@github.com:/https://github.com/}"
+        https_url="${https_url/.git/}.git"
+        echo "$https_url"
+        echo "$https_url" | xclip -selection clipboard
+    else
+        echo "Invalid GitHub URL."
+    fi
 }
 
 
