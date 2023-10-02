@@ -345,5 +345,9 @@
   {
     "key": "shift+alt+z",
     "command": "redo"
+  },
+  {
+    "key": "shift+alt+.",
+    "command": "editor.emmet.action.matchTag"
   }
 ]

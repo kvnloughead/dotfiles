@@ -21,7 +21,6 @@ HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -239,7 +238,7 @@ fi
 PS1_DARK='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
 PS1_LIGHT='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
 
-PS1_TRIPLETEN='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@tripleten\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
+PS1_TRIPLETEN='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]student@tripleten\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\]$ '
 
 set_prompt_theme() {
   if [ "$(tmux show-environment | grep THEME | cut -d'=' -f2)" = 'dark' ]; then
@@ -254,3 +253,5 @@ alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light
 alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y-Dark'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'GitHub Dark Dimmed'"
 
 source <(min completions bash)
+
+export DISTRO=focal  # actual is vera, but it is based off of ubuntu focal
