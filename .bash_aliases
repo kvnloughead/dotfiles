@@ -106,3 +106,7 @@ function copy_last_command {
     echo "Command copied to clipboard: $command"
 }
 
+# misc
+
+alias json_server="json-server --watch db.json --id _id --port 3001"
+alias kill_port="npx kill-port"
