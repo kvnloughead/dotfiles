@@ -25,7 +25,7 @@ alias gp='git push origin HEAD'
 alias gr='git remote'
 alias gst='git stash'
 alias gcl="git clone"
-alias gclean="git reset --hard"
+alias gclean="git add -A && git reset --hard"
 alias gcln="gclean"
 alias gacln="ga -A && gclean"
 
@@ -74,44 +74,6 @@ function get_remote() {
   fi
 
 }
-
-# function swap_git_url {
-#    local url
-
-#     if [[ -n $1 ]]; then
-#         url="$1"
-#     else
-#         read url
-#     fi
-
-#     if [[ $1 == "--help" || $1 == "-h" || $1 == "help" ]]; then
-#         echo ""
-#         echo "Usage: git_swap_url repo-url"
-#         echo ""
-#         echo "Converts a GitHub HTTPS URL to SSH format or vice versa."
-#         echo ""
-#         echo "Options:"
-#         echo "  --help, -h   display this help and exit"
-#         echo ""
-#         return
-#     fi
-
-#     local url="$1"
-
-#     if [[ $url == https://github.com/* ]]; then
-#         local ssh_url="${url/https:\/\/github.com\//git@github.com:}"
-#         ssh_url="${ssh_url/.git/}.git"
-#         echo "$ssh_url"
-#         echo "$ssh_url" | xclip -selection clipboard
-#     elif [[ $url == git@github.com:* ]]; then
-#         local https_url="${url/git@github.com:/https://github.com/}"
-#         https_url="${https_url/.git/}.git"
-#         echo "$https_url"
-#         echo "$https_url" | xclip -selection clipboard
-#     else
-#         echo "Invalid GitHub URL."
-#     fi
-# }
 
 function swap_git_url {
     local url
