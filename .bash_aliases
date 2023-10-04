@@ -110,3 +110,4 @@ function copy_last_command {
 
 alias json_server="json-server --watch db.json --id _id --port 3001"
 alias kill_port="npx kill-port"
+alias kp="npx kill-port"
