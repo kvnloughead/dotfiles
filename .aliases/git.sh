@@ -12,6 +12,7 @@ alias gb='git branch'
 alias gm='git merge'
 
 alias ga='git add'
+alias ga='git add -A'
 alias gac='git add -A && git commit'
 alias gaca='git add -A && git commit --amend'
 alias gaf='git add -f'
@@ -24,6 +25,9 @@ alias gp='git push origin HEAD'
 alias gr='git remote'
 alias gst='git stash'
 alias gcl="git clone"
+alias gclean="git reset --hard"
+alias gcln="gclean"
+alias gacln="ga -A && gclean"
 
 alias githardpull='git reset HEAD --hard && git pull'
 
