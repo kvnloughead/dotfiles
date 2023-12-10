@@ -335,10 +335,6 @@
   },
 
   {
-    "key": "alt+x",
-    "command": "editor.action.clipboardCutAction"
-  },
-  {
     "key": "alt+z",
     "command": "undo"
   },

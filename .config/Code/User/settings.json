@@ -1,255 +1,225 @@
 {
-	"files.autoSave": "onFocusChange",
-	"editor.formatOnSave": true,
-	"editor.rulers": [
-		80,
-		120
-	],
-	"emmet.triggerExpansionOnTab": true,
-	"editor.tabCompletion": "on",
-	"liveServer.settings.donotShowInfoMsg": true,
-	"liveServer.settings.port": 5555,
-	"javascript.updateImportsOnFileMove.enabled": "always",
-	"editor.tokenColorCustomizations": {
-		"textMateRules": [
-			{
-				"scope": "text.html.markdown.journal.task.open.bullet",
-				"settings": {
-					"foreground": "#FFFF00"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.task.open.marker",
-				"settings": {
-					"foreground": "#FFFF00"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.task.open.keyword",
-				"settings": {
-					"fontStyle": "italic"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.task.open.text",
-				"settings": {}
-			},
-			{
-				"scope": "text.html.markdown.journal.task.completed.keyword",
-				"settings": {
-					"fontStyle": "italic"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.task.completed.marker",
-				"settings": {
-					"foreground": "#AAAAAA"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.task.completed.text",
-				"settings": {
-					"foreground": "#AAAAAA"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.task.completed.bullet",
-				"settings": {
-					"foreground": "#FFFF00"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.memo.keyword",
-				"settings": {
-					"fontStyle": "italic"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.memo.bullet",
-				"settings": {
-					"foreground": "#FFFF00"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.scope",
-				"settings": {
-					"foreground": "#FFFF00"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.link.keyword",
-				"settings": {
-					"fontStyle": "italic"
-				}
-			},
-			{
-				"scope": "text.html.markdown.journal.link.bullet",
-				"settings": {
-					"foreground": "#FFFF00"
-				}
-			}
-		]
-	},
-	"workbench.editorAssociations": {
-		"*.ipynb": "jupyter-notebook"
-	},
-	"editor.suggestSelection": "first",
-	"notebook.cellToolbarLocation": {
-		"default": "right",
-		"jupyter-notebook": "right"
-	},
-	"liveServer.settings.NoBrowser": true,
-	"css.validate": false, // Disable css built-in lint
-	"stylelint.enable": true, // Enable sytlelint
-	"scss.validate": false,
-	"editor.minimap.enabled": false,
-	"editor.wordWrap": "wordWrapColumn",
-	"window.menuBarVisibility": "toggle",
-	"security.workspace.trust.untrustedFiles": "open",
-	"terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)", // Disable scss lint (optional if using scss)
-	"[css]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[html]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[javascriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[md]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"editor.bracketPairColorization.enabled": true,
-	"editor.guides.bracketPairs": "active",
-	"editor.linkedEditing": true, // Update closing tags automatically. Doesn't work in JSX yet.
-	"editor.tabSize": 2, // Compatibility with Prettier
-	"editor.hover.delay": 600,
-	"liveServer.settings.CustomBrowser": "chrome",
-	"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, IndentWidth: 2, ColumnLimit: 0}",
-	"prettier.eslintIntegration": true,
-	"prettier.printWidth": 80,
-	"prettier.trailingComma": "all",
-	"prettier.cssEnable": [
-		"css",
-		"less",
-		"sass"
-	],
-	// Nunjucks settings
-	"nunjucksFormat.commline": true,
-	"nunjucksFormat.spaceclose": true,
-	"nunjucksFormat.style": true,
-	"nunjucksFormat.unformatted": false,
-	"nunjucksFormat.force_attribute": true,
-	"nunjucksFormat.wrap": 80,
-	// markdown settings
-	"[markdown]": {
-		"editor.formatOnSave": true,
-		"editor.formatOnPaste": true,
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"emmet.includeLanguages": {
-		"typescript": "html", // for lit-html
-		"javascript": "html", // for lit-html
-		"njk": "html",
-		"nunjucks": "html",
-		"erb": "html"
-	},
-	"lit-html.tags": [
-		"html",
-		"template"
-	],
-	/* lit-html
+  /* ------------------------------------------------------------------------ */
+  /*                                Fomatting                                                              
+  /* ------------------------------------------------------------------------ */
+
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+
+  /* -------------------------------- Prettier -------------------------------*/
+  // Setting default formatter globally seemed necessary to fix a bug with
+  // Prettier being unable to format at various times. 12.10.2023
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[md]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /* ------------------------------------------------------------------------ */
+  /*                                 General                                
+  /* ------------------------------------------------------------------------ */
+  "editor.rulers": [80, 120],
+  "editor.tabCompletion": "on",
+  "editor.suggestSelection": "first",
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.linkedEditing": true, // Update closing tags automatically. Doesn't work in JSX yet.
+  "editor.tabSize": 2, // Compatibility with Prettier
+  "editor.hover.delay": 600,
+
+  // prevents menu bar from being selected unnecessarily on ubuntu
+  "window.titleBarStyle": "custom",
+  "window.customMenuBarAltFocus": false,
+
+  "emmet.triggerExpansionOnTab": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "css.validate": false, // Disable css built-in lint
+
+  /* ------------------------------------------------------------------------ */
+  /*                               Extensions                                 */
+  /* ------------------------------------------------------------------------ */
+
+  /* ------------------------------- Live Server -----------------------------*/
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.port": 5555,
+  "liveServer.settings.NoBrowser": true,
+
+  /* ------------------------------------------------------------------------ */
+  /*                                 Python                                
+  /* ------------------------------------------------------------------------ */
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "right"
+  },
+
+  "window.menuBarVisibility": "toggle",
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)", // Disable scss lint (optional if using scss)
+
+  "liveServer.settings.CustomBrowser": "chrome",
+
+  "emmet.includeLanguages": {
+    "typescript": "html", // for lit-html
+    "javascript": "html", // for lit-html
+    "njk": "html",
+    "nunjucks": "html",
+    "erb": "html"
+  },
+
+  "lit-html.tags": ["html", "template"],
+  /* lit-html
     These options seemed to enable lit-html formatting, but deleting them
     didn't remove. Keeping them here in comments just in case */
-<<<<<<< Updated upstream
   // "typescript.tsserver.useSyntaxServer": "never",
-	// "editor.defaultFormatter": "esbenp.prettier-vscode",
-	"files.associations": {
-		"*.njk": "nunjucks",
-		"*.html": "html",
-		"*.erb": "erb"
-	},
-	"[erb]": {
-		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "aliariff.vscode-erb-beautify"
-	},
-	// prevents menu bar from being selected unnecessarily on ubuntu
-	"window.titleBarStyle": "custom",
-	"window.customMenuBarAltFocus": false,
-	"tabnine.experimentalAutoImports": true,
-	"codegpt.apiKey": "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",
-	// audio cues
-	"audioCues.diffLineDeleted": "off",
-	"audioCues.diffLineInserted": "off",
-	"audioCues.diffLineModified": "off",
-	"audioCues.lineHasBreakpoint": "off",
-	"audioCues.lineHasError": "off",
-	"audioCues.lineHasInlineSuggestion": "off",
-	"audioCues.noInlayHints": "off",
-	"audioCues.notebookCellCompleted": "off",
-	"audioCues.notebookCellFailed": "off",
-	"audioCues.onDebugBreak": "off",
-	"audioCues.taskCompleted": "off",
-	"audioCues.taskFailed": "off",
-	"audioCues.terminalCommandFailed": "off",
-	"audioCues.terminalQuickFix": "off",
-	"audioCues.lineHasFoldedArea": "off",
-	"workbench.colorTheme": "Default Light Modern",
-	// add multicursors on ctrl click instead of alt click
-	"editor.multiCursorModifier": "ctrlCmd",
-	"workbench.startupEditor": "none",
-	"svelte.enable-ts-plugin": true
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.njk": "nunjucks",
+    "*.html": "html",
+    "*.erb": "erb"
+  },
+  "[erb]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+  },
+
+  // audio cues
+  "audioCues.diffLineDeleted": "off",
+  "audioCues.diffLineInserted": "off",
+  "audioCues.diffLineModified": "off",
+  "audioCues.lineHasBreakpoint": "off",
+  "audioCues.lineHasError": "off",
+  "audioCues.lineHasInlineSuggestion": "off",
+  "audioCues.noInlayHints": "off",
+  "audioCues.notebookCellCompleted": "off",
+  "audioCues.notebookCellFailed": "off",
+  "audioCues.onDebugBreak": "off",
+  "audioCues.taskCompleted": "off",
+  "audioCues.taskFailed": "off",
+  "audioCues.terminalCommandFailed": "off",
+  "audioCues.terminalQuickFix": "off",
+  "audioCues.lineHasFoldedArea": "off",
+  "workbench.colorTheme": "GitHub Dark Dimmed",
+  // add multicursors on ctrl click instead of alt click
+  "editor.multiCursorModifier": "ctrlCmd",
+  "workbench.startupEditor": "none",
+  "svelte.enable-ts-plugin": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "git.autofetch": true,
+  "go.toolsManagement.autoUpdate": true,
+
+  /* ------------------------------------------------------------------------ */
+  /*                                Markdown                                 
+  /* ------------------------------------------------------------------------ */
+  // markdown settings
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "text.html.markdown.journal.task.open.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.open.marker",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.open.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.open.text",
+        "settings": {}
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.marker",
+        "settings": {
+          "foreground": "#AAAAAA"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.text",
+        "settings": {
+          "foreground": "#AAAAAA"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.task.completed.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.memo.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.memo.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.scope",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.link.keyword",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "text.html.markdown.journal.link.bullet",
+        "settings": {
+          "foreground": "#FFFF00"
+        }
+      }
+    ]
+  }
 }
-=======
-	// "typescript.tsserver.useSyntaxServer": "never",
-// "editor.defaultFormatter": "esbenp.prettier-vscode",
-"files.associations": {
-	"*.njk": "nunjucks",
-	"*.html": "html",
-	"*.erb": "erb"
-},
-"[erb]": {
-	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "aliariff.vscode-erb-beautify"
-},
-// prevents menu bar from being selected unnecessarily on ubuntu
-"window.titleBarStyle": "custom",
-"window.customMenuBarAltFocus": false,
-"tabnine.experimentalAutoImports": true,
-"codegpt.apiKey": "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",
-// audio cues
-"audioCues.diffLineDeleted": "off",
-"audioCues.diffLineInserted": "off",
-"audioCues.diffLineModified": "off",
-"audioCues.lineHasBreakpoint": "off",
-"audioCues.lineHasError": "off",
-"audioCues.lineHasInlineSuggestion": "off",
-"audioCues.noInlayHints": "off",
-"audioCues.notebookCellCompleted": "off",
-"audioCues.notebookCellFailed": "off",
-"audioCues.onDebugBreak": "off",
-"audioCues.taskCompleted": "off",
-"audioCues.taskFailed": "off",
-"audioCues.terminalCommandFailed": "off",
-"audioCues.terminalQuickFix": "off",
-"audioCues.lineHasFoldedArea": "off",
-"workbench.colorTheme": "Default Light Modern",
-// add multicursors on ctrl click instead of alt click
-"editor.multiCursorModifier": "ctrlCmd",
-"workbench.startupEditor": "none",
-"svelte.enable-ts-plugin": true,
-"explorer.confirmDragAndDrop": false
-}
->>>>>>> Stashed changes
