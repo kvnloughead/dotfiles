@@ -158,6 +158,7 @@ export PATH="$HOME/bin/crc:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="~/data/db:$PATH"
 export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:$HOME/go/bin"
 
 export EDITOR='vim'
 export gh='https://github.com/kvnloughead/'
@@ -255,3 +256,5 @@ alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark';
 source <(min completions bash)
 
 export DISTRO=focal  # actual is vera, but it is based off of ubuntu focal
+
+export GREENLIGHT_DB_DSN='postgres://greenlight:psqldev@localhost/greenlight'
