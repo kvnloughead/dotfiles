@@ -21,6 +21,12 @@ alias dgp='dotgit push origin HEAD'
 alias dgst='dotgit stash'
 
 function dgrep() {
-  # cd's home, greps the dotgit repo, and cd's back to cwd 
-  cd && dotgit grep $1; cd -
+  # Save the current directory
+  local current_dir=$(pwd)
+
+  # Change to home directory and perform grep
+  cd && dotgit grep "$@"
+
+  # Change back to the original directory silently
+  cd "$current_dir" >/dev/null
 }
