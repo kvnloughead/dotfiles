@@ -158,6 +158,7 @@ export PATH="$HOME/bin/crc:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="~/data/db:$PATH"
 export PATH="$PATH:$HOME/.scripts"
+export PATH="$PATH:$HOME/go/bin"
 
 export EDITOR='vim'
 export gh='https://github.com/kvnloughead/'

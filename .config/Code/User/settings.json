@@ -2,16 +2,17 @@
   /* ------------------------------------------------------------------------ */
   /*                                Fomatting                                                              
   /* ------------------------------------------------------------------------ */
-
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
-
   /* -------------------------------- Prettier -------------------------------*/
   // Setting default formatter globally seemed necessary to fix a bug with
   // Prettier being unable to format at various times. 12.10.2023
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -99,7 +100,8 @@
   "files.associations": {
     "*.njk": "nunjucks",
     "*.html": "html",
-    "*.erb": "erb"
+    "*.erb": "erb",
+    "*.tmpl": "html"
   },
   "[erb]": {
     "editor.formatOnSave": true,
