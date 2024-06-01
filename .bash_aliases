@@ -4,11 +4,6 @@ for f in ~/.aliases/*.sh; do source $f; done
 alias c='code'
 alias c.='code .'
 alias c..='code ..'
-alias c~='code ~'
-
-alias ctutor='code --user-data-dir=$HOME/.config/Code/User/tutor'
-alias ct='ctutor'
-alias ct.='ctutor .'
 
 alias v="vim"
 alias n="nano"
@@ -111,3 +106,60 @@ function copy_last_command {
 alias json_server="json-server --watch db.json --id _id --port 3001"
 alias kill_port="npx kill-port"
 alias kp="npx kill-port"
+
+# Function to open the current repo and branch in the browser
+remote_open() {
+    # Get the remote URL
+    remote_url=$(git config --get remote.origin.url)
+    if [[ -z "$remote_url" ]]; then
+        echo "No remote repository found."
+        return 1
+    fi
+
+    # Get the current branch name
+    branch_name=$(git symbolic-ref --short HEAD)
+    if [[ -z "$branch_name" ]]; then
+        echo "No branch found."
+        return 1
+    fi
+
+    # Convert the remote URL to the browser URL
+    if [[ "$remote_url" == git@github.com:* ]]; then
+        # Convert SSH URL to HTTPS URL for GitHub
+        browser_url="https://github.com/${remote_url#git@github.com:}"
+    elif [[ "$remote_url" == *"github.com"* ]]; then
+        # Handle GitHub HTTPS URLs
+        browser_url="$remote_url"
+    elif [[ "$remote_url" == git@gitlab.com:* ]]; then
+        # Convert SSH URL to HTTPS URL for GitLab
+        browser_url="https://gitlab.com/${remote_url#git@gitlab.com:}"
+    elif [[ "$remote_url" == *"gitlab.com"* ]]; then
+        # Handle GitLab HTTPS URLs
+        browser_url="$remote_url"
+    else
+        echo "Unsupported remote repository host."
+        return 1
+    fi
+
+    # Remove .git suffix if present
+    browser_url="${browser_url%.git}"
+
+    # Append the current branch path
+    if [[ "$browser_url" == *"github.com"* ]]; then
+        browser_url="$browser_url/tree/$branch_name"
+    elif [[ "$browser_url" == *"gitlab.com"* ]]; then
+        browser_url="$browser_url/-/tree/$branch_name"
+    fi
+
+    # Open the URL in the default browser
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        xdg-open "$browser_url"
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        open "$browser_url"
+    elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" ]]; then
+        start "$browser_url"
+    else
+        echo "Unsupported OS."
+        return 1
+    fi
+}
