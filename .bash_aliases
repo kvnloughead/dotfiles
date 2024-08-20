@@ -3,6 +3,7 @@ for f in ~/.aliases/*.sh; do source $f; done
 # editors
 alias c='code'
 alias c.='code .'
+alias c,='code .'
 alias c..='code ..'
 
 alias v="vim"
