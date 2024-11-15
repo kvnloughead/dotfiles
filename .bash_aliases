@@ -164,3 +164,25 @@ remote_open() {
         return 1
     fi
 }
+
+function alpha_to_hex() {
+    if [ $# -eq 0 ] || [[ "$1" =~ ^(-h|--help|help)$ ]]; then
+        echo "Usage: alpha_to_hex <decimal>"
+        echo "Convert decimal (0-1) to hex alpha channel (00-ff)"
+        echo "Example: alpha_to_hex 0.5 -> #80"
+        return
+    fi
+
+    printf '#%02x\n' $(printf '%.0f' $(echo "$1 * 255" | bc -l))
+}
+
+function hex_to_alpha() {
+    if [ $# -eq 0 ] || [[ "$1" =~ ^(-h|--help|help)$ ]]; then
+        echo "Usage: hex_to_alpha <hex>"
+        echo "Convert hex alpha channel (00-ff) to decimal (0-1)"
+        echo "Example: hex_to_alpha 80 -> 0.50"
+        return
+    fi
+
+    printf "%.2f\n" $(echo "ibase=16; $(echo ${1#\#} | tr '[:lower:]' '[:upper:]') / FF" | bc -l)
+}
