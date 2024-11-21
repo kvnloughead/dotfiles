@@ -2,7 +2,7 @@
 
 This is my second attempt at a dotfiles repo. The [first attempt](https://github.com/kvnloughead/dotfiles-homerepo) simply turned my $HOME directory into a repo with a `.gitignore` of `*`. This went ok, and I was able to set up a new computer with relative ease. But I kept running into issues with the setup, so I decided to go with another approach — a bare repo.
 
-For more details about the issues I ran into in my first iteration, and an explanation of bare repos and their use in version-controlling your dotfiles, see my [blog post on the subject](https://todo-name-blog.vercel.app/posts/dotfiles-bare-repo).
+For more details about the issues I ran into in my first iteration, and an explanation of bare repos and their use in version-controlling your dotfiles, see my [blog post on the subject](https://www.kevinloughead.com/blog/bare-dotfiles-repo/).
 
 ## Basic Features
 
@@ -21,18 +21,17 @@ These are the steps one would take to setup their dotfiles repo on a new machine
    # Clones as non-bare repo, so you get all the files and not just the history
    git clone \
       --separate-git-dir=$HOME/.dotfiles \
-      remote-url \
+      git@github.com:kvnloughead/dotfiles.git \
       dotfiles-tmp
 
    # --separate-git-dir places git history in ~/.dotfiles instead of `./.git`
    # Working tree will be placed in `./dotfiles`.
    ```
 
-2. Copy working tree to where each file should go.
+2. Copy the working tree to where each file should go.
 
    ```sh
-   # There are other ways to do this of course.
-   # And I'm not sure if it is necessary to exclude `.git`.
+   # I'm not sure if it is necessary to exclude `.git`.
    rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
    ```
 
