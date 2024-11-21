@@ -1,4 +1,4 @@
-# Dotfiles Bare Repo
+`1# Dotfiles Bare Repo
 
 This is my second attempt at a dotfiles repo. The [first attempt](https://github.com/kvnloughead/dotfiles-homerepo) simply turned my $HOME directory into a repo with a `.gitignore` of `*`. This went ok, and I was able to set up a new computer with relative ease. But I kept running into issues with the setup, so I decided to go with another approach — a bare repo.
 
@@ -37,9 +37,24 @@ These are the steps one would take to setup their dotfiles repo on a new machine
 
 3. `rm -rf dotfiles-tmp`
 
-4. Run the install script with `~/.scripts/initial-install.sh`.
+4. (Linux only) Run the install script with `~/.scripts/initial-install.sh`. 
 
-   This script is nothing fancy, and far from perfect. It's really just a long list of commands that I've been compiling of programs that I figure I'll probably want on a new machine. I'd suggest pruning to suit your own needs.
+  This is a long list of commands that I've been compiling of programs that I figure I'll probably want on a new machine. I'd suggest pruning to suit your own needs. 
+
+## Notes on Mac usage
+
+To use Bash instead of Zsh I included the following in `.bash_profile`:
+
+```sh
+# Source .bashrc if it exists
+if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+```
+
+I also changed the default shell with `chsh -s /bin/bash`. This way, `.bashrc` is sourced whenever you open a new terminal session. I'm not sure if changing the default shell is necessary.
+
+After making these changes I needed to reinstall Homebrew and node in the new shell.
 
 ## Workflow
 
