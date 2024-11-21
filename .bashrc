@@ -10,14 +10,16 @@ esac
 
 # don't put lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+if [ -n "$BASH_VERSION" ]; then
+    HISTCONTROL=ignoreboth
+    
+    # append to the history file, don't overwrite it
+    shopt -s histappend
+    
+    # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+    HISTSIZE=1000
+    HISTFILESIZE=2000
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -55,17 +57,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# grabs git branch for placement in prompt
+# Parse git branch for prompt
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] \n$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w$(parse_git_branch) \n$ '
+if [ -n "$BASH_VERSION" ]; then
+    # username@hostname in magenta, full path in blue, git branch in yellow
+    PS1='\[\033[35m\]\u@\h\[\033[00m\] \[\033[34m\]\w\[\033[33m\]$(parse_git_branch)\[\033[00m\] $ '
 fi
-unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -111,12 +111,14 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+if [ -n "$BASH_VERSION" ]; then
+    if ! shopt -oq posix; then
+        if [ -f /usr/share/bash-completion/bash_completion ]; then
+            . /usr/share/bash-completion/bash_completion
+        elif [ -f /etc/bash_completion ]; then
+            . /etc/bash_completion
+        fi
+    fi
 fi
 
 
@@ -164,19 +166,20 @@ export EDITOR='vim'
 export gh='https://github.com/kvnloughead/'
 export lh='http://localhost'
 
-bind 'set bell-style none'
+if [ -n "$BASH_VERSION" ]; then
+    bind 'set bell-style none'
+fi
 
 # If using WSL, load WSL specific settings
-if grep -iE '(microsoft|wsl)' /proc/version 1> /dev/null
-then
-    windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
-    windows_userdir=`wslpath "${windows_userdir}"`
-    CHROME="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
-    alias serve="npx live-server --browser=${CHROME}"
+if [ -f /proc/version ]; then
+    if grep -iE '(microsoft|wsl)' /proc/version 1> /dev/null; then
+        windows_userdir=`cmd.exe /c "echo %USERPROFILE%" 2> /dev/null | tr -d '\r'`
+        windows_userdir=`wslpath "${windows_userdir}"`
+        CHROME="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+        alias serve="npx live-server --browser=${CHROME}"
 
-    for f in ~/.config/wsl/*.sh; do source $f; done
-else
-    CHROME="google-chrome"
+        for f in ~/.config/wsl/*.sh; do source $f; done
+    fi
 fi
 
 # tt time-tracker
@@ -186,34 +189,23 @@ export N_PREFIX="$HOME/util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":
 
 alias vim="vim -S ~/.vimrc"  # vim wasn't reading ~/.vimrc
 
-###-begin-cb-completions-###
-#
-# yargs command completion script
-#
-# Installation: cb completion >> ~/.bashrc
-#    or cb completion >> ~/.bash_profile on OSX.
-#
-_cb_yargs_completions()
-{
-    local cur_word args type_list
-
-    cur_word="${COMP_WORDS[COMP_CWORD]}"
-    args=("${COMP_WORDS[@]}")
-
-    # ask yargs to generate completions.
-    type_list=$(cb --get-yargs-completions "${args[@]}")
-
-    COMPREPLY=( $(compgen -W "${type_list}" -- ${cur_word}) )
-
-    # if no match was found, fall back to filename completion
-    if [ ${#COMPREPLY[@]} -eq 0 ]; then
-      COMPREPLY=()
-    fi
-
-    return 0
-}
-complete -o bashdefault -o default -F _cb_yargs_completions cb
-###-end-cb-completions-###
+if [ -n "$BASH_VERSION" ]; then
+    ###-begin-cb-completions-###
+    _cb_yargs_completions()
+    {
+        local cur_word args type_list
+        cur_word="${COMP_WORDS[COMP_CWORD]}"
+        args=("${COMP_WORDS[@]}")
+        type_list=$(cb --get-yargs-completions "${args[@]}")
+        COMPREPLY=( $(compgen -W "${type_list}" -- ${cur_word}) )
+        if [ ${#COMPREPLY[@]} -eq 0 ]; then
+          COMPREPLY=()
+        fi
+        return 0
+    }
+    complete -o bashdefault -o default -F _cb_yargs_completions cb
+    ###-end-cb-completions-###
+fi
 
 # deno
 export DENO_INSTALL="$HOME/.deno"
@@ -221,7 +213,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 # remaps ralt to rtrl on hp laptop
 # for some reason, it often stops working, requiring you to source the file again 
-if [ $(hostname) == "hp-laptop" ]; then
+if [ "$(hostname)" = "hp-laptop" ]; then
     setxkbmap -option 'ctrl:ralt_rctrl'
 fi
 
@@ -234,27 +226,30 @@ if command -v tmux>/dev/null; then
     # check if we have been switched to light, else go dark
     [[ ! $(tmux show-environment | grep THEME) =~ 'THEME=light' ]] && 
     tmux set-environment THEME dark
+
+    PS1_DARK='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] $ '
+    PS1_LIGHT='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] $ '
+
+    PS1_TRIPLETEN='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]kevin@tripleten\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] $ '
+
+    PS1_LOCAL='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]kevin@local\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\]$ '
+
+    set_prompt_theme() {
+    if [ "$(tmux show-environment | grep THEME | cut -d'=' -f2)" = 'dark' ]; then
+        PS1="$PS1_DARK"
+    else
+        PS1="$PS1_LIGHT"
+    fi
+    }
+    set_prompt_theme
+
+    alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'Default Light Modern'"
+    alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y-Dark'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'GitHub Dark Dimmed'"
+
 fi
 
-PS1_DARK='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] $ '
-PS1_LIGHT='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]\u@\h\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] $ '
-
-PS1_TRIPLETEN='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]kevin@tripleten\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\] $ '
-
-PS1_LOCAL='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]kevin@local\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\]$ '
-
-set_prompt_theme() {
-  if [ "$(tmux show-environment | grep THEME | cut -d'=' -f2)" = 'dark' ]; then
-    PS1="$PS1_DARK"
-  else
-    PS1="$PS1_LIGHT"
-  fi
-}
-set_prompt_theme
-
-alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'Default Light Modern'"
-alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y-Dark'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'GitHub Dark Dimmed'"
-
-source <(min completions bash)
+if command -v min >/dev/null 2>&1; then
+    source <(min completions bash)
+fi
 
 export DISTRO=focal  # actual is vera, but it is based off of ubuntu focal
