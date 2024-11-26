@@ -253,3 +253,13 @@ if command -v min >/dev/null 2>&1; then
 fi
 
 export DISTRO=focal  # actual is vera, but it is based off of ubuntu focal
+
+if [ -n "$BASH_VERSION" ]; then
+    # Git completion
+    if [ -f $(brew --prefix)/etc/bash_completion.d/git-completion.bash ]; then
+        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+    fi
+
+    # General bash completion (if you want completion for other commands too)
+    [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+fi

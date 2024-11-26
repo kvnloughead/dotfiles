@@ -40,19 +40,38 @@ These are the steps one would take to setup their dotfiles repo on a new machine
 4. (Linux only) Run the install script with `~/.scripts/initial-install.sh`. 
 
   This is a long list of commands that I've been compiling of programs that I figure I'll probably want on a new machine. I'd suggest pruning to suit your own needs. 
-
 ## Notes on Mac usage
 
 To use Bash instead of Zsh I included the following in `.bash_profile`:
 
 ```sh
+# Setup git autocompletion on macOS
+# Note that you may need to run `brew reinstall git` to get this to work
+eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+
 # Source .bashrc if it exists
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
 ```
 
-I also changed the default shell with `chsh -s /bin/bash`. This way, `.bashrc` is sourced whenever you open a new terminal session. I'm not sure if changing the default shell is necessary.
+The first two lines setup git autocompletion and bash completion. The last two lines source `.bashrc` if it exists. This block was added to  `.bashrc`:
+
+```bash
+
+if [ -n "$BASH_VERSION" ]; then
+    # Git completion
+    if [ -f $(brew --prefix)/etc/bash_completion.d/git-completion.bash ]; then
+        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+    fi
+
+    # General bash completion (if you want completion for other commands too)
+    [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+fi
+```
+
+I also changed the default shell with `chsh -s /bin/bash`, and wrapped some parts of `.bashrc` in `if [ -n "$BASH_VERSION" ]; then ... fi` to prevent errors on macOS. This way, `.bashrc` is sourced whenever you open a new terminal session. I'm not sure if changing the default shell is necessary.
 
 After making these changes I needed to reinstall Homebrew and node in the new shell.
 
