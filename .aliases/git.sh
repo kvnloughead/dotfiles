@@ -29,6 +29,9 @@ alias gclean="git add -A && git reset --hard"
 alias gcln="gclean"
 alias gacln="ga -A && gclean"
 
+alias gpull='git pull'
+alias gfetch='git fetch'
+
 alias githardpull='git reset HEAD --hard && git pull'
 
 gcp() {
