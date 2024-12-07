@@ -234,17 +234,100 @@ if command -v tmux>/dev/null; then
 
     PS1_LOCAL='${debian_chroot:+($debian_chroot)}\[\033[01;95m\]kevin@local\[\033[00m\] \[\033[1;94m\]\w\[\033[00m\]\[\033[0;33m\]$(parse_git_branch)\[\033[00m\]$ '
 
+    # Theme switching functions and aliases
     set_prompt_theme() {
-    if [ "$(tmux show-environment | grep THEME | cut -d'=' -f2)" = 'dark' ]; then
-        PS1="$PS1_DARK"
-    else
-        PS1="$PS1_LIGHT"
-    fi
+        if [ "${THEME:-dark}" = 'dark' ]; then
+            PS1="$PS1_DARK"
+        else
+            PS1="$PS1_LIGHT"
+        fi
     }
-    set_prompt_theme
 
-    alias ol="tmux source-file ~/.tmux_light.conf; tmux set-environment THEME 'light'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'Default Light Modern'"
-    alias od="tmux source-file ~/.tmux_dark.conf; tmux set-environment THEME 'dark'; set_prompt_theme; gsettings set org.cinnamon.theme name 'Mint-Y-Dark'; reconfiger -f $HOME/.config/Code/User/settings.json set workbench.colorTheme 'GitHub Dark Dimmed'"
+    set_system_theme() {
+        local theme=$1
+        export THEME=$theme
+
+        # Set editor themes
+        if [ "$theme" = "light" ]; then
+            theme_name='Default Light Modern'
+        else
+            theme_name='Default Dark Modern'
+        fi
+
+        # Set paths based on OS
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS paths
+            code_settings="${HOME}/Library/Application Support/Code/User/settings.json"
+            cursor_settings="${HOME}/Library/Application Support/Cursor/User/settings.json"
+        else
+            # Linux paths
+            code_settings="${HOME}/.config/Code/User/settings.json"
+            cursor_settings="${HOME}/.config/Cursor/User/settings.json"
+        fi
+
+        # VSCode
+        if [ -f "${code_settings}" ]; then
+            reconfiger -f "${code_settings}" set workbench.colorTheme "${theme_name}" || echo "Failed to update VSCode theme"
+        else
+            echo "VSCode settings file not found at: ${code_settings}"
+        fi
+
+        # Cursor
+        if [ -f "${cursor_settings}" ]; then
+            reconfiger -f "${cursor_settings}" set workbench.colorTheme "${theme_name}" || echo "Failed to update Cursor theme"
+        else
+            echo "Cursor settings file not found at: ${cursor_settings}"
+        fi
+
+        # Set terminal colors if in tmux
+        if [ -n "$TMUX" ]; then
+            if [ "$theme" = "light" ]; then
+                tmux source-file ~/.tmux_light.conf
+            else
+                tmux source-file ~/.tmux_dark.conf
+            fi
+            tmux set-environment THEME "$theme"
+        fi
+
+        # Set prompt
+        set_prompt_theme
+
+        # Set system theme based on OS
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS
+            if [ "$theme" = "light" ]; then
+                osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to false'
+            else
+                osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to true'
+            fi
+        elif command -v gsettings >/dev/null 2>&1; then
+            # Linux with gsettings (GNOME, Cinnamon, etc.)
+            if [ "$theme" = "light" ]; then
+                gsettings set org.cinnamon.theme name 'Mint-Y'
+            else
+                gsettings set org.cinnamon.theme name 'Mint-Y-Dark'
+            fi
+        fi
+
+        # Set cursor color (works in most terminals)
+        if [ "$theme" = "light" ]; then
+            echo -ne '\e]12;#000000\a'  # Set cursor to black
+        else
+            echo -ne '\e]12;#FFFFFF\a'  # Set cursor to white
+        fi
+    }
+
+    # Theme switching aliases
+    alias ol="set_system_theme light"
+    alias od="set_system_theme dark"
+
+    # Initialize theme (defaults to dark if not set)
+    if [ -n "$TMUX" ]; then
+        THEME=$(tmux show-environment | grep THEME | cut -d'=' -f2 || echo "dark")
+    else
+        THEME=${THEME:-dark}
+    fi
+    set_system_theme "$THEME"
 
 fi
 
@@ -263,3 +346,4 @@ if [ -n "$BASH_VERSION" ]; then
     # General bash completion (if you want completion for other commands too)
     [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 fi
+. "/Users/kevinloughead/.deno/env"

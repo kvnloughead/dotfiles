@@ -142,4 +142,10 @@ function initial-dotfiles-install() {
     sudo apt-get install zip unzip -y
   fi
 
+  # install reconfiger (used to set VSCode settings via CLI)
+  cd
+  git clone https://github.com/kvnloughead/reconfiger.git
+  cd reconfiger && deno task deploy
+  cd ..
+  rm -rf reconfiger
 }
