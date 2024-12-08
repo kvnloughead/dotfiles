@@ -162,6 +162,12 @@ export PATH="~/data/db:$PATH"
 export PATH="$PATH:$HOME/.scripts"
 export PATH="$PATH:$HOME/go/bin"
 
+# Lunar display manager
+if [[ "$(uname)" == "Darwin" ]]; then
+    export PATH="/Applications/Lunar.app/Contents/MacOS:$PATH"
+fi
+
+
 export EDITOR='vim'
 export gh='https://github.com/kvnloughead/'
 export lh='http://localhost'
@@ -308,26 +314,19 @@ if command -v tmux>/dev/null; then
                 gsettings set org.cinnamon.theme name 'Mint-Y-Dark'
             fi
         fi
-
-        # Set cursor color (works in most terminals)
-        if [ "$theme" = "light" ]; then
-            echo -ne '\e]12;#000000\a'  # Set cursor to black
-        else
-            echo -ne '\e]12;#FFFFFF\a'  # Set cursor to white
-        fi
     }
 
     # Theme switching aliases
-    alias ol="set_system_theme light"
-    alias od="set_system_theme dark"
+    alias thl="set_system_theme light"
+    alias thd="set_system_theme dark"
 
-    # Initialize theme (defaults to dark if not set)
+    # Initialize theme variables without changing system theme
     if [ -n "$TMUX" ]; then
         THEME=$(tmux show-environment | grep THEME | cut -d'=' -f2 || echo "dark")
     else
         THEME=${THEME:-dark}
     fi
-    set_system_theme "$THEME"
+    set_prompt_theme
 
 fi
 
@@ -347,3 +346,6 @@ if [ -n "$BASH_VERSION" ]; then
     [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 fi
 . "/Users/kevinloughead/.deno/env"
+
+# silence deprecation warnings
+export BASH_SILENCE_DEPRECATION_WARNING=1
