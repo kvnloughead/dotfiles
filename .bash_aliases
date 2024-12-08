@@ -1,10 +1,10 @@
 for f in ~/.aliases/*.sh; do source $f; done
 
 # editors
-alias c='code'
-alias c.='code .'
-alias c,='code .'
-alias c..='code ..'
+alias c='cursor'
+alias c.='cursor .'
+alias c,='cursor .'
+alias c..='cursor ..'
 
 alias v="vim"
 alias n="nano"

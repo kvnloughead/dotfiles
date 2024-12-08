@@ -10,3 +10,4 @@ fi
 
 # Load .profile if it exists
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+. "/Users/kevinloughead/.deno/env"

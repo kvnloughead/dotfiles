@@ -1,349 +1,349 @@
 // Place your key bindings in this file to override the defaults
-[
-  {
-    "key": "ctrl+c",
-    "command": "workbench.action.terminal.copySelection",
-    "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
-  },
-  {
-    "key": "ctrl+v",
-    "command": "workbench.action.terminal.copySelection",
-    "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
-  },
-  {
-    "key": "alt+right",
-    "command": "cursorEnd",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "end",
-    "command": "-cursorEnd",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+right",
-    "command": "cursorEndSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+end",
-    "command": "-cursorEndSelect",
-    "when": "textInputFocus"
-  },
+// [
+//   {
+//     "key": "ctrl+c",
+//     "command": "workbench.action.terminal.copySelection",
+//     "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
+//   },
+//   {
+//     "key": "ctrl+v",
+//     "command": "workbench.action.terminal.copySelection",
+//     "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
+//   },
+//   {
+//     "key": "alt+right",
+//     "command": "cursorEnd",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "end",
+//     "command": "-cursorEnd",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+right",
+//     "command": "cursorEndSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+end",
+//     "command": "-cursorEndSelect",
+//     "when": "textInputFocus"
+//   },
 
-  // end of line
-  {
-    "key": "alt+left",
-    "command": "cursorHome",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+left",
-    "command": "cursorHomeSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+q",
-    "command": "cursorHome",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+q",
-    "command": "cursorHomeSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+e",
-    "command": "cursorEnd",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+e",
-    "command": "cursorEndSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+o",
-    "command": "cursorEnd",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+o",
-    "command": "cursorEndSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+u",
-    "command": "cursorHome",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+u",
-    "command": "cursorHomeSelect",
-    "when": "textInputFocus"
-  },
+//   // end of line
+//   {
+//     "key": "alt+left",
+//     "command": "cursorHome",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+left",
+//     "command": "cursorHomeSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "alt+q",
+//     "command": "cursorHome",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+q",
+//     "command": "cursorHomeSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "alt+e",
+//     "command": "cursorEnd",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+e",
+//     "command": "cursorEndSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "alt+o",
+//     "command": "cursorEnd",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+o",
+//     "command": "cursorEndSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "alt+u",
+//     "command": "cursorHome",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+u",
+//     "command": "cursorHomeSelect",
+//     "when": "textInputFocus"
+//   },
 
-  {
-    "key": "ctrl+, ctrl+.",
-    "command": "workbench.action.openSettingsJson"
-  },
-  {
-    "key": "ctrl+down",
-    "command": "cursorBottom",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+end",
-    "command": "-cursorBottom",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+up",
-    "command": "cursorTop",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+home",
-    "command": "-cursorTop",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+up",
-    "command": "cursorTopSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+home",
-    "command": "-cursorTopSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+down",
-    "command": "cursorBottomSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+end",
-    "command": "-cursorBottomSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+down",
-    "command": "-editor.action.copyLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+shift+c",
-    "command": "-workbench.action.terminal.openNativeConsole",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "ctrl+q",
-    "command": "-workbench.action.quickOpenView"
-  },
-  {
-    "key": "ctrl+alt+down",
-    "command": "workbench.action.terminal.resizePaneDown"
-  },
-  {
-    "key": "ctrl+shift+alt+left",
-    "command": "workbench.action.terminal.resizePaneLeft"
-  },
-  {
-    "key": "ctrl+shift+alt+right",
-    "command": "workbench.action.terminal.resizePaneRight"
-  },
-  {
-    "key": "ctrl+alt+up",
-    "command": "workbench.action.terminal.resizePaneUp"
-  },
-  {
-    "key": "ctrl+alt+d",
-    "command": "git.timeline.selectForCompare"
-  },
-  {
-    "key": "tab",
-    "command": "-tab",
-    "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
-  },
-  {
-    "key": "ctrl+alt+]",
-    "command": "editor.action.smartSelect.expand",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "shift+alt+right",
-    "command": "-editor.action.smartSelect.expand",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+[",
-    "command": "editor.action.smartSelect.shrink",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "shift+alt+left",
-    "command": "-editor.action.smartSelect.shrink",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+shift+a",
-    "command": "editor.emmet.action.balanceOut"
-  },
-  {
-    "key": "ctrl+shift+alt+a",
-    "command": "editor.emmet.action.balanceIn"
-  },
-  {
-    "key": "ctrl+alt+w",
-    "command": "editor.action.insertCursorAbove",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+shift+up",
-    "command": "-editor.action.insertCursorAbove",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+s",
-    "command": "editor.action.insertCursorBelow",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "shift+alt+down",
-    "command": "-editor.action.insertCursorBelow",
-    "when": "editorTextFocus"
-  },
-  // remap block travel keys
-  {
-    "key": "alt+[",
-    "command": "block-travel.jumpUp",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+]",
-    "command": "block-travel.jumpDown",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+i",
-    "command": "block-travel.jumpUp",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+k",
-    "command": "block-travel.jumpDown",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+shift+[",
-    "command": "block-travel.selectUp",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+shift+]",
-    "command": "block-travel.selectDown",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+shift+i",
-    "command": "block-travel.selectUp",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+shift+k",
-    "command": "block-travel.selectDown",
-    "when": "editorTextFocus"
-  },
+//   {
+//     "key": "ctrl+, ctrl+.",
+//     "command": "workbench.action.openSettingsJson"
+//   },
+//   {
+//     "key": "ctrl+down",
+//     "command": "cursorBottom",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+end",
+//     "command": "-cursorBottom",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+up",
+//     "command": "cursorTop",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+home",
+//     "command": "-cursorTop",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+up",
+//     "command": "cursorTopSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+home",
+//     "command": "-cursorTopSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+down",
+//     "command": "cursorBottomSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+end",
+//     "command": "-cursorBottomSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+down",
+//     "command": "-editor.action.copyLinesDownAction",
+//     "when": "editorTextFocus && !editorReadonly"
+//   },
+//   {
+//     "key": "ctrl+shift+c",
+//     "command": "-workbench.action.terminal.openNativeConsole",
+//     "when": "!terminalFocus"
+//   },
+//   {
+//     "key": "ctrl+q",
+//     "command": "-workbench.action.quickOpenView"
+//   },
+//   {
+//     "key": "ctrl+alt+down",
+//     "command": "workbench.action.terminal.resizePaneDown"
+//   },
+//   {
+//     "key": "ctrl+shift+alt+left",
+//     "command": "workbench.action.terminal.resizePaneLeft"
+//   },
+//   {
+//     "key": "ctrl+shift+alt+right",
+//     "command": "workbench.action.terminal.resizePaneRight"
+//   },
+//   {
+//     "key": "ctrl+alt+up",
+//     "command": "workbench.action.terminal.resizePaneUp"
+//   },
+//   {
+//     "key": "ctrl+alt+d",
+//     "command": "git.timeline.selectForCompare"
+//   },
+//   {
+//     "key": "tab",
+//     "command": "-tab",
+//     "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+]",
+//     "command": "editor.action.smartSelect.expand",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "shift+alt+right",
+//     "command": "-editor.action.smartSelect.expand",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+[",
+//     "command": "editor.action.smartSelect.shrink",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "shift+alt+left",
+//     "command": "-editor.action.smartSelect.shrink",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+a",
+//     "command": "editor.emmet.action.balanceOut"
+//   },
+//   {
+//     "key": "ctrl+shift+alt+a",
+//     "command": "editor.emmet.action.balanceIn"
+//   },
+//   {
+//     "key": "ctrl+alt+w",
+//     "command": "editor.action.insertCursorAbove",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+up",
+//     "command": "-editor.action.insertCursorAbove",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+s",
+//     "command": "editor.action.insertCursorBelow",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "shift+alt+down",
+//     "command": "-editor.action.insertCursorBelow",
+//     "when": "editorTextFocus"
+//   },
+//   // remap block travel keys
+//   {
+//     "key": "alt+[",
+//     "command": "block-travel.jumpUp",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "alt+]",
+//     "command": "block-travel.jumpDown",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+i",
+//     "command": "block-travel.jumpUp",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+k",
+//     "command": "block-travel.jumpDown",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "alt+shift+[",
+//     "command": "block-travel.selectUp",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "alt+shift+]",
+//     "command": "block-travel.selectDown",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+i",
+//     "command": "block-travel.selectUp",
+//     "when": "editorTextFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+k",
+//     "command": "block-travel.selectDown",
+//     "when": "editorTextFocus"
+//   },
 
-  // map directions to alt+[ijkl]
-  { "key": "alt+i", "command": "cursorUp", "when": "textInputFocus" },
-  { "key": "alt+j", "command": "cursorLeft", "when": "textInputFocus" },
-  { "key": "alt+k", "command": "cursorDown", "when": "textInputFocus" },
-  { "key": "alt+l", "command": "cursorRight", "when": "textInputFocus" },
-  {
-    "key": "shift+alt+i",
-    "command": "cursorUpSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+j",
-    "command": "cursorLeftSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+k",
-    "command": "cursorDownSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "shift+alt+l",
-    "command": "cursorRightSelect",
-    "when": "textInputFocus"
-  },
+//   // map directions to alt+[ijkl]
+//   { "key": "alt+i", "command": "cursorUp", "when": "textInputFocus" },
+//   { "key": "alt+j", "command": "cursorLeft", "when": "textInputFocus" },
+//   { "key": "alt+k", "command": "cursorDown", "when": "textInputFocus" },
+//   { "key": "alt+l", "command": "cursorRight", "when": "textInputFocus" },
+//   {
+//     "key": "shift+alt+i",
+//     "command": "cursorUpSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+j",
+//     "command": "cursorLeftSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+k",
+//     "command": "cursorDownSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "shift+alt+l",
+//     "command": "cursorRightSelect",
+//     "when": "textInputFocus"
+//   },
 
-  // word left / right
-  {
-    "key": "ctrl+alt+j",
-    "command": "cursorWordLeft",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+alt+l",
-    "command": "cursorWordRight",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+j",
-    "command": "cursorWordLeftSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+l",
-    "command": "cursorWordEndRightSelect",
-    "when": "textInputFocus"
-  },
+//   // word left / right
+//   {
+//     "key": "ctrl+alt+j",
+//     "command": "cursorWordLeft",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+l",
+//     "command": "cursorWordRight",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+j",
+//     "command": "cursorWordLeftSelect",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+shift+l",
+//     "command": "cursorWordEndRightSelect",
+//     "when": "textInputFocus"
+//   },
 
-  // backspace / delete
-  { "key": "alt+h", "command": "deleteLeft", "when": "textInputFocus" },
-  {
-    "key": "alt+;",
-    "command": "deleteRight",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+alt+h",
-    "command": "deleteWordLeft",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+alt+;",
-    "command": "deleteWordRight",
-    "when": "textInputFocus"
-  },
+//   // backspace / delete
+//   { "key": "alt+h", "command": "deleteLeft", "when": "textInputFocus" },
+//   {
+//     "key": "alt+;",
+//     "command": "deleteRight",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+h",
+//     "command": "deleteWordLeft",
+//     "when": "textInputFocus"
+//   },
+//   {
+//     "key": "ctrl+alt+;",
+//     "command": "deleteWordRight",
+//     "when": "textInputFocus"
+//   },
 
-  // move line up / down
-  {
-    "key": "alt+w",
-    "command": "editor.action.moveLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "alt+s",
-    "command": "editor.action.moveLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
+//   // move line up / down
+//   {
+//     "key": "alt+w",
+//     "command": "editor.action.moveLinesUpAction",
+//     "when": "editorTextFocus && !editorReadonly"
+//   },
+//   {
+//     "key": "alt+s",
+//     "command": "editor.action.moveLinesDownAction",
+//     "when": "editorTextFocus && !editorReadonly"
+//   },
 
-  {
-    "key": "alt+z",
-    "command": "undo"
-  },
-  {
-    "key": "shift+alt+z",
-    "command": "redo"
-  },
-  {
-    "key": "shift+alt+.",
-    "command": "editor.emmet.action.matchTag"
-  }
-]
+//   {
+//     "key": "alt+z",
+//     "command": "undo"
+//   },
+//   {
+//     "key": "shift+alt+z",
+//     "command": "redo"
+//   },
+//   {
+//     "key": "shift+alt+.",
+//     "command": "editor.emmet.action.matchTag"
+//   }
+// ]
