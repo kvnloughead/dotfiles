@@ -115,7 +115,7 @@ alias kill_port="npx kill-port"
 alias kp="npx kill-port"
 
 # Function to open the current repo and branch in the browser
-remote_open() {
+open_remote() {
     # Get the remote URL
     remote_url=$(git config --get remote.origin.url)
     if [[ -z "$remote_url" ]]; then
