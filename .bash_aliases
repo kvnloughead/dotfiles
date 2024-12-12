@@ -97,7 +97,13 @@ function copy_last_command {
     command=$(echo $command | xargs)
     
     # Pipe the command into xclip to load it to the clipboard
-    echo $command | xclip -selection clipboard
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        echo $command | xclip -selection clipboard
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        echo $command | pbcopy
+    elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" ]]; then
+        echo $command | clip
+    fi
     
     echo "Command copied to clipboard: $command"
 }
