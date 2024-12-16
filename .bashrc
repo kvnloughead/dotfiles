@@ -289,8 +289,10 @@ if command -v tmux>/dev/null; then
         if [ -n "$TMUX" ]; then
             if [ "$theme" = "light" ]; then
                 tmux source-file ~/.tmux_light.conf
+                printf '\e[0 q'  # Reset cursor
             else
                 tmux source-file ~/.tmux_dark.conf
+                printf '\e[0 q'  # Reset cursor
             fi
             tmux set-environment THEME "$theme"
         fi
