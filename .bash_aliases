@@ -28,8 +28,6 @@ alias lsa="ls -a"
 alias lsl="ls -lhF"
 alias lsal="ls -alhF"
 
-alias clip="xclip -sel clipboard"
-
 # scripts
 alias crc='crc.sh'    # "Create React Component"
 
@@ -80,6 +78,25 @@ function zp() {
   zip -r "$output_file" "$input_dir" -x \*.git/* -x \*node_modules/*
 }
 
+# Copy to clipboard, using the appropriate method for the OS
+# Usage: echo "Hello, world!" | clip
+copy_to_clipboard() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        pbcopy
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        xclip -sel clipboard
+    elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" ]]; then
+        clip
+    else
+        echo "Unsupported OS for clipboard operations"
+        return 1
+    fi
+}
+
+alias clip="copy_to_clipboard"
+
+
+
 # min
 alias blog="min --cfg $HOME/.config/min/blog.json"
 alias til="min --cfg $HOME/.config/min/til.json"
@@ -88,22 +105,14 @@ alias til="min --cfg $HOME/.config/min/til.json"
 alias update-vscode="sudo apt update && sudo apt-get upgrade code"
 
 function copy_last_command {
-    # Get the most recent command from the history. If run in the terminal, 
-    # this returns itself. But run in this script, it returns the previous 
-    # command. Might not be a robust solution. 
+    # Get the most recent command from the history
     command=$(fc -ln -1)
     
     # Remove leading and trailing whitespace
     command=$(echo $command | xargs)
     
-    # Pipe the command into xclip to load it to the clipboard
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        echo $command | xclip -selection clipboard
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        echo $command | pbcopy
-    elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" ]]; then
-        echo $command | clip
-    fi
+    # Use our new clipboard helper function
+    echo $command | copy_to_clipboard
     
     echo "Command copied to clipboard: $command"
 }
