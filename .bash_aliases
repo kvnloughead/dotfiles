@@ -95,8 +95,6 @@ copy_to_clipboard() {
 
 alias clip="copy_to_clipboard"
 
-
-
 # min
 alias blog="min --cfg $HOME/.config/min/blog.json"
 alias til="min --cfg $HOME/.config/min/til.json"
@@ -123,7 +121,6 @@ alias json_server="json-server --watch db.json --id _id --port 3001"
 alias kill_port="npx kill-port"
 alias kp="npx kill-port"
 
-# Function to open the current repo and branch in the browser
 open_remote() {
     # Get the remote URL
     remote_url=$(git config --get remote.origin.url)
@@ -139,18 +136,31 @@ open_remote() {
         return 1
     fi
 
+    # Get the git root and current path
+    git_root=$(git rev-parse --show-toplevel)
+    if [[ -z "$git_root" ]]; then
+        echo "Not in a git repository."
+        return 1
+    fi
+    
+    # Get relative path using pwd and string manipulation
+    current_path="${1:-.}"
+    if [[ -d "$current_path" || -f "$current_path" ]]; then
+        cd "$(dirname "$current_path")"
+        relative_path=$(echo "$(pwd)/$(basename "$current_path")" | sed "s|$git_root/||")
+        cd - > /dev/null
+    else
+        relative_path=$(echo "$(pwd)" | sed "s|$git_root/||")
+    fi
+
     # Convert the remote URL to the browser URL
     if [[ "$remote_url" == git@github.com:* ]]; then
-        # Convert SSH URL to HTTPS URL for GitHub
         browser_url="https://github.com/${remote_url#git@github.com:}"
     elif [[ "$remote_url" == *"github.com"* ]]; then
-        # Handle GitHub HTTPS URLs
         browser_url="$remote_url"
     elif [[ "$remote_url" == git@gitlab.com:* ]]; then
-        # Convert SSH URL to HTTPS URL for GitLab
         browser_url="https://gitlab.com/${remote_url#git@gitlab.com:}"
     elif [[ "$remote_url" == *"gitlab.com"* ]]; then
-        # Handle GitLab HTTPS URLs
         browser_url="$remote_url"
     else
         echo "Unsupported remote repository host."
@@ -160,11 +170,11 @@ open_remote() {
     # Remove .git suffix if present
     browser_url="${browser_url%.git}"
 
-    # Append the current branch path
+    # Append the current branch and file path
     if [[ "$browser_url" == *"github.com"* ]]; then
-        browser_url="$browser_url/tree/$branch_name"
+        browser_url="$browser_url/blob/$branch_name/$relative_path"
     elif [[ "$browser_url" == *"gitlab.com"* ]]; then
-        browser_url="$browser_url/-/tree/$branch_name"
+        browser_url="$browser_url/-/blob/$branch_name/$relative_path"
     fi
 
     # Open the URL in the default browser
