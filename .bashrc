@@ -253,6 +253,16 @@ if command -v tmux>/dev/null; then
         local theme=$1
         export THEME=$theme
 
+        # Set terminal colors if in tmux
+        if [ -n "$TMUX" ]; then
+            if [ "$theme" = "light" ]; then
+                tmux source-file ~/.tmux_light.conf
+            else
+                tmux source-file ~/.tmux_dark.conf
+            fi
+            tmux set-environment THEME "$theme"
+        fi
+
         # Set editor themes
         if [ "$theme" = "light" ]; then
             theme_name='Default Light Modern'
@@ -283,18 +293,6 @@ if command -v tmux>/dev/null; then
             reconfiger -f "${cursor_settings}" set workbench.colorTheme "${theme_name}" || echo "Failed to update Cursor theme"
         else
             echo "Cursor settings file not found at: ${cursor_settings}"
-        fi
-
-        # Set terminal colors if in tmux
-        if [ -n "$TMUX" ]; then
-            if [ "$theme" = "light" ]; then
-                tmux source-file ~/.tmux_light.conf
-                printf '\e[0 q'  # Reset cursor
-            else
-                tmux source-file ~/.tmux_dark.conf
-                printf '\e[0 q'  # Reset cursor
-            fi
-            tmux set-environment THEME "$theme"
         fi
 
         # Set prompt
