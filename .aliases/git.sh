@@ -1,7 +1,9 @@
 alias g=git
 
 alias gl="git log"
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gloneline="git log --oneline"
+alias glfancy="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glparents="git log --oneline --decorate --graph --parents"
 alias gs='git status'
 alias gd='git diff'
 alias gdiff='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'

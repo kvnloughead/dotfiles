@@ -1,10 +1,15 @@
 for f in ~/.aliases/*.sh; do source $f; done
 
 # editors
-alias c='cursor'
-alias c.='cursor .'
-alias c,='cursor .'
-alias c..='cursor ..'
+alias c='code'
+alias c.='code .'
+alias c,='code .'
+alias c..='code ..'
+
+alias cu='cursor'
+alias cu.='cursor .'
+alias cu,='cursor .'
+alias cu..='cursor ..'
 
 alias v="vim"
 alias n="nano"
@@ -105,13 +110,13 @@ alias update-vscode="sudo apt update && sudo apt-get upgrade code"
 function copy_last_command {
     # Get the most recent command from the history
     command=$(fc -ln -1)
-    
+
     # Remove leading and trailing whitespace
     command=$(echo $command | xargs)
-    
+
     # Use our new clipboard helper function
     echo $command | copy_to_clipboard
-    
+
     echo "Command copied to clipboard: $command"
 }
 
@@ -142,7 +147,7 @@ open_remote() {
         echo "Not in a git repository."
         return 1
     fi
-    
+
     # Get relative path using pwd and string manipulation
     current_path="${1:-.}"
     if [[ -d "$current_path" || -f "$current_path" ]]; then
@@ -172,9 +177,9 @@ open_remote() {
 
     # Append the current branch and file path
     if [[ "$browser_url" == *"github.com"* ]]; then
-        browser_url="$browser_url/blob/$branch_name/$relative_path"
+        browser_url="$browser_url/tree/$branch_name/$relative_path"
     elif [[ "$browser_url" == *"gitlab.com"* ]]; then
-        browser_url="$browser_url/-/blob/$branch_name/$relative_path"
+        browser_url="$browser_url/-/tree/$branch_name/$relative_path"
     fi
 
     # Open the URL in the default browser
@@ -211,3 +216,9 @@ function hex_to_alpha() {
 
     printf "%.2f\n" $(echo "ibase=16; $(echo ${1#\#} | tr '[:lower:]' '[:upper:]') / FF" | bc -l)
 }
+
+alias ghostty_defaults="ghostty +show-config --default | grep keybind"
+alias ghostty_keybind="ghostty +list-keybinds"
+alias ghostty_config="ghostty +show-config --default --docs"
+alias ghostty_actions="ghostty +list-actions --docs"
+

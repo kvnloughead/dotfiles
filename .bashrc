@@ -349,3 +349,15 @@ fi
 
 # silence deprecation warnings
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+
+
+# alias for running godo from the project root with a local config file
+alias gododev='go run ./cmd/cli/main.go -c=/Users/kevinloughead/.config/godo/settings.local.json'
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+source ~/.aws-completion.sh
+
+# Prevent accidental file overwrites
+set -o noclobber
