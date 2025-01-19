@@ -53,10 +53,36 @@ function fetchswitch() {
   git branch --set-upstream-to=origin/$1
 }
 
-function get_remote() {
-	# gets remote of cwd if cwd is a git repo
-	# loads the remote as an ssh url to the clipboard
+function copy_to_clipboard() {
+  # Copies input to clipboard based on OS
+  # Usage: echo "text" | copy_to_clipboard
+  case "$(uname)" in
+    "Darwin")  # macOS
+      pbcopy
+      ;;
+    "Linux")   # Linux
+      if command -v xclip >/dev/null 2>&1; then
+        xclip -selection clipboard
+      elif command -v xsel >/dev/null 2>&1; then
+        xsel --clipboard
+      else
+        echo "Warning: Neither xclip nor xsel is installed" >&2
+        return 1
+      fi
+      ;;
+    "MINGW"*|"MSYS"*|"CYGWIN"*)  # Windows
+      clip.exe
+      ;;
+    *)
+      echo "Warning: Unsupported operating system for clipboard operations" >&2
+      return 1
+      ;;
+  esac
+}
 
+function get_remote() {
+  # gets remote of cwd if cwd is a git repo
+  # loads the remote as an ssh url to the clipboard
   local remote=$(git config --get remote.origin.url)
   if [[ "$remote" =~ ^https:// || git@github.com: ]]; then
     remote=${remote/https:\/\/github.com\//git@github.com:}
@@ -65,19 +91,19 @@ function get_remote() {
     remote=${remote/git:\/\/github.com\//git@github.com:}
     remote=${remote/git:\/\/gitlab.com\//git@gitlab.com:}
     remote=${remote/git:\/\/bitbucket.org\//git@bitbucket.org:}
-    if [ -t 1 ]; then 
-      # if output is a terminal, log a message
+    
+    if [ -t 1 ]; then
+      # if output is a terminal, copy to clipboard
       echo "Remote repo copied to clipboard"
       echo "$remote"
-      echo "$remote" | xclip -selection clipboard
-    else 
+      echo "$remote" | copy_to_clipboard
+    else
       # if in a pipe, just log the remote
       echo "$remote"
     fi
   else
     echo "Not a Git repo or remote URL not recognized"
   fi
-
 }
 
 function swap_git_url {
